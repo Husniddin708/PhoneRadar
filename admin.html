@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="uz" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PhoneRadar Admin Panel | Smartfonlar Apparat Bazasini Boshqarish</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .admin-container {
+      padding: 3rem 1.5rem;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+    .admin-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2.5rem;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+    .admin-stats-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+    .admin-stat-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius-xl);
+      padding: 1.6rem;
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+    }
+    .admin-stat-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: var(--radius-lg);
+      background: rgba(139, 92, 246, 0.15);
+      color: var(--accent-purple);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+    }
+    .admin-stat-val {
+      font-size: 1.8rem;
+      font-weight: 800;
+      line-height: 1.1;
+    }
+    .admin-stat-lbl {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+    .admin-table-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius-xl);
+      padding: 1.8rem;
+      box-shadow: var(--shadow-md);
+    }
+    .admin-table-toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .admin-search-wrap {
+      position: relative;
+      flex: 1;
+      max-width: 450px;
+    }
+    .admin-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+    .admin-table th, .admin-table td {
+      padding: 1rem;
+      border-bottom: 1px solid var(--border-color);
+      text-align: left;
+    }
+    .admin-table th {
+      background: var(--bg-surface-elevated);
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+    .admin-phone-cell {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+    }
+    .admin-phone-img {
+      width: 45px;
+      height: 45px;
+      object-fit: contain;
+      border-radius: var(--radius-sm);
+      background: var(--bg-surface-elevated);
+      padding: 3px;
+    }
+    .admin-action-btn {
+      width: 34px;
+      height: 34px;
+      border-radius: var(--radius-md);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: var(--trans-quick);
+      margin-right: 0.4rem;
+    }
+    .btn-edit {
+      background: rgba(6, 182, 212, 0.15);
+      color: var(--accent-cyan);
+    }
+    .btn-edit:hover { background: var(--accent-cyan); color: #fff; }
+    .btn-del {
+      background: rgba(244, 63, 94, 0.15);
+      color: var(--accent-rose);
+    }
+    .btn-del:hover { background: var(--accent-rose); color: #fff; }
+
+    /* Form Styles */
+    .form-grid-2col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+      margin-bottom: 1.2rem;
+    }
+    .form-group {
+      margin-bottom: 1rem;
+    }
+    .form-group label {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      margin-bottom: 0.4rem;
+    }
+    .form-input, .form-textarea, .form-select {
+      width: 100%;
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 0.65rem 0.9rem;
+      color: var(--text-primary);
+      font-size: 0.88rem;
+    }
+    .form-input:focus, .form-textarea:focus, .form-select:focus {
+      border-color: var(--accent-purple);
+      outline: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-container">
+      <a href="index.html" class="brand-logo">
+        <div class="logo-icon"><i class="fa-solid fa-mobile-screen-button"></i></div>
+        <div class="logo-text">
+          <span class="logo-title">PHONE<span class="accent-text">RADAR</span></span>
+          <span class="logo-sub">ADMIN DASHBOARD</span>
+        </div>
+      </a>
+
+      <nav class="nav-menu">
+        <a href="index.html" class="nav-link"><i class="fa-solid fa-house"></i> Bosh Sahifa</a>
+        <a href="catalog.html" class="nav-link"><i class="fa-solid fa-layer-group"></i> Telefonlar Kataloqi</a>
+        <a href="advisor.html" class="nav-link"><i class="fa-solid fa-wand-magic-sparkles"></i> Aqlli Maslahatchi</a>
+        <a href="guide.html" class="nav-link"><i class="fa-solid fa-compass"></i> Xarid Qo'llanmasi</a>
+        <a href="hardware.html" class="nav-link"><i class="fa-solid fa-camera"></i> Kamera & Batareya</a>
+        <a href="compare.html" class="nav-link"><i class="fa-solid fa-code-compare"></i> Taqqoslash</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="btn btn-primary" id="openAddPhoneModalBtn">
+          <i class="fa-solid fa-plus"></i> Yangi Telefon Qo'shish
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="admin-container">
+    <div class="admin-header">
+      <div>
+        <span class="section-tag"><i class="fa-solid fa-server"></i> Backend Boshqaruvi</span>
+        <h1 style="font-size: 2.2rem; margin-top: 0.4rem;">Smartfonlar Apparat Bazasi</h1>
+        <p style="color: var(--text-secondary);">Barcha ma'lumotlar serverdagi <code>data/phones.json</code> bazasiga avtomatik saqlanadi.</p>
+      </div>
+    </div>
+
+    <!-- Stats Row -->
+    <div class="admin-stats-row">
+      <div class="admin-stat-card">
+        <div class="admin-stat-icon"><i class="fa-solid fa-mobile-screen"></i></div>
+        <div>
+          <div class="admin-stat-val" id="statTotalPhones">0</div>
+          <div class="admin-stat-lbl">Jami Telefonlar</div>
+        </div>
+      </div>
+      <div class="admin-stat-card">
+        <div class="admin-stat-icon" style="color: var(--accent-cyan); background: rgba(6, 182, 212, 0.15);"><i class="fa-solid fa-tags"></i></div>
+        <div>
+          <div class="admin-stat-val" id="statTotalBrands">0</div>
+          <div class="admin-stat-lbl">Brendlar Soni</div>
+        </div>
+      </div>
+      <div class="admin-stat-card">
+        <div class="admin-stat-icon" style="color: var(--accent-green); background: rgba(16, 185, 129, 0.15);"><i class="fa-solid fa-star"></i></div>
+        <div>
+          <div class="admin-stat-val" id="statAvgRating">0.0</div>
+          <div class="admin-stat-lbl">O'rtacha Ekspert Bali</div>
+        </div>
+      </div>
+      <div class="admin-stat-card">
+        <div class="admin-stat-icon" style="color: var(--accent-amber); background: rgba(245, 158, 11, 0.15);"><i class="fa-solid fa-bolt"></i></div>
+        <div>
+          <div class="admin-stat-val">REST API</div>
+          <div class="admin-stat-lbl">Status: 200 OK Faol</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Table Card -->
+    <div class="admin-table-card">
+      <div class="admin-table-toolbar">
+        <div class="admin-search-wrap">
+          <i class="fa-solid fa-magnifying-glass search-icon" style="left: 1rem;"></i>
+          <input type="text" id="adminSearchInput" class="search-input" placeholder="Model, brend yoki kamera bo'yicha qidiruv...">
+        </div>
+        <div style="color: var(--text-muted); font-size: 0.9rem;">
+          Jami: <strong id="adminTableCount" style="color: var(--accent-cyan);">0</strong> ta model
+        </div>
+      </div>
+
+      <div style="overflow-x: auto;">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Smartfon</th>
+              <th>Narxi</th>
+              <th>Kamera Sensori</th>
+              <th>Batareya & Zaryad</th>
+              <th>Chipset</th>
+              <th>Suv Himoyasi</th>
+              <th>Amallar</th>
+            </tr>
+          </thead>
+          <tbody id="adminTableBody">
+            <!-- Populated via JS -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+
+  <!-- Add/Edit Phone Modal -->
+  <div class="modal-backdrop" id="addPhoneModalBackdrop"></div>
+  <div class="phone-modal" id="addPhoneModal" style="width: 800px;">
+    <div class="modal-header">
+      <div class="modal-title-wrap">
+        <h3 id="modalFormTitle"><i class="fa-solid fa-plus text-accent"></i> Yangi Smartfon Qo'shish</h3>
+      </div>
+      <button class="modal-close-btn" id="closeAddModalBtn"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div class="modal-body">
+      <form id="phoneForm">
+        <input type="hidden" id="editPhoneId">
+        
+        <div class="form-grid-2col">
+          <div class="form-group">
+            <label>Model Nomi *</label>
+            <input type="text" id="formName" class="form-input" placeholder="Masalan: Xiaomi 15 Pro" required>
+          </div>
+          <div class="form-group">
+            <label>Brend *</label>
+            <select id="formBrand" class="form-select" required>
+              <option value="Samsung">Samsung</option>
+              <option value="Apple">Apple</option>
+              <option value="Xiaomi">Xiaomi</option>
+              <option value="OnePlus">OnePlus</option>
+              <option value="Google">Google</option>
+              <option value="Vivo">Vivo</option>
+              <option value="Asus">Asus</option>
+              <option value="Nothing">Nothing</option>
+              <option value="Sony">Sony</option>
+              <option value="Poco">Poco</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-grid-2col">
+          <div class="form-group">
+            <label>Toifa</label>
+            <select id="formCategory" class="form-select">
+              <option value="premium">Premium Flagman ($1000+)</option>
+              <option value="flagship">Flagman ($700 - $1000)</option>
+              <option value="flagship_killer">Flagman Qotili ($450 - $700)</option>
+              <option value="midrange">O'rta Toifa ($250 - $450)</option>
+              <option value="gaming">Geymerlik Telefonlari</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Belgi (Badge)</label>
+            <input type="text" id="formBadge" class="form-input" placeholder="Masalan: Tezlik Chempioni">
+          </div>
+        </div>
+
+        <div class="form-grid-2col">
+          <div class="form-group">
+            <label>Narxi (USD) *</label>
+            <input type="number" id="formPriceUSD" class="form-input" placeholder="899" required>
+          </div>
+          <div class="form-group">
+            <label>Narxi (UZS) *</label>
+            <input type="text" id="formPriceUZS" class="form-input" placeholder="11 500 000 so'm" required>
+          </div>
+        </div>
+
+        <div class="form-grid-2col">
+          <div class="form-group">
+            <label>Rasm URL</label>
+            <input type="url" id="formImage" class="form-input" placeholder="https://images.unsplash.com/...">
+          </div>
+          <div class="form-group">
+            <label>Chiqqan Yili</label>
+            <input type="number" id="formYear" class="form-input" value="2024">
+          </div>
+        </div>
+
+        <h4 style="margin: 1.5rem 0 0.8rem; font-size: 1rem; color: var(--accent-cyan);"><i class="fa-solid fa-camera"></i> Kamera Apparati</h4>
+        <div class="form-grid-2col">
+          <div class="form-group">
+            <label>Asosiy Sensor (Megapiksel & Datchik)</label>
+            <input type="text" id="formCamMain" class="form-input" placeholder="50 MP Sony LYT-900 (1 dyuym, OIS)">
+          </div>
+          <div class="form-group">
+            <label>Telefoto / Zum Linza</label>
+            <input type="text" id="formCamZoom" class="form-input" placeholder="50 MP Periskop 5x optik zoom">
+          </div>
+        </div>
+
+        <h4 style="margin: 1.5rem 0 0.8rem; font-size: 1rem; color: var(--accent-green);"><i class="fa-solid fa-bolt"></i> Batareya & Zaryadlash</h4>
+        <div class="form-grid-2col">
+          <div class="form-group">
+            <label>Batareya Sig'imi (mAh)</label>
+            <input type="text" id="formBatteryCap" class="form-input" placeholder="5400 mAh">
+          </div>
+          <div class="form-group">
+            <label>Zaryadlash Tezligi (Watt)</label>
+            <input type="text" id="formBatteryCharging" class="form-input" placeholder="100W (25 daqiqada 100%)">
+          </div>
+        </div>
+
+        <h4 style="margin: 1.5rem 0 0.8rem; font-size: 1rem; color: var(--accent-purple);"><i class="fa-solid fa-microchip"></i> Displey, Protsessor & Himoya</h4>
+        <div class="form-grid-2col">
+          <div class="form-group">
+            <label>Displey (O'lcham, Tur, Nits)</label>
+            <input type="text" id="formDisplay" class="form-input" placeholder="6.82' LTPO AMOLED 120Hz 4500 nits">
+          </div>
+          <div class="form-group">
+            <label>Protsessor (Chipset)</label>
+            <input type="text" id="formChipset" class="form-input" placeholder="Snapdragon 8 Gen 3 (4nm)">
+          </div>
+        </div>
+
+        <div class="form-grid-2col">
+          <div class="form-group">
+            <label>Suvdan Himoya & Korpus</label>
+            <input type="text" id="formProtection" class="form-input" placeholder="IP68, Titanium ramka">
+          </div>
+          <div class="form-group">
+            <label>Qutida Zaryadlovchi Blok</label>
+            <select id="formChargerInBox" class="form-select">
+              <option value="Bor! Qutida original tezkor zaryadlovchi blok mavjud">Bor (Qutida bor)</option>
+              <option value="Qutida zaryadlovchi blok yo'q (faqat Type-C kabel)">Yo'q (Qutida yo'q)</option>
+            </select>
+          </div>
+        </div>
+
+        <div style="display: flex; justify-content: flex-end; gap: 1rem; margin-top: 1.5rem; border-top: 1px solid var(--border-color); padding-top: 1.2rem;">
+          <button type="button" class="btn btn-secondary" id="cancelFormBtn">Bekor qilish</button>
+          <button type="submit" class="btn btn-primary" id="savePhoneBtn">
+            <i class="fa-solid fa-floppy-disk"></i> Bazaga Saqlash
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    let adminPhones = [];
+
+    async function loadStats() {
+      try {
+        const res = await fetch('/api/stats');
+        const data = await res.json();
+        document.getElementById('statTotalPhones').textContent = data.totalPhones;
+        document.getElementById('statTotalBrands').textContent = data.totalBrands;
+        document.getElementById('statAvgRating').textContent = data.averageRating;
+      } catch (e) {
+        console.error(e);
+      }
+    }
+
+    async function loadPhones(query = '') {
+      try {
+        const url = query ? `/api/phones?q=${encodeURIComponent(query)}` : '/api/phones';
+        const res = await fetch(url);
+        const result = await res.json();
+        adminPhones = result.data;
+        renderAdminTable(adminPhones);
+      } catch (e) {
+        console.error(e);
+      }
+    }
+
+    function renderAdminTable(phones) {
+      const tbody = document.getElementById('adminTableBody');
+      document.getElementById('adminTableCount').textContent = phones.length;
+      tbody.innerHTML = '';
+
+      if (phones.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="7" style="text-align:center; padding: 2rem; color: var(--text-muted);">Hech qanday telefon topilmadi</td></tr>`;
+        return;
+      }
+
+      phones.forEach(p => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td>
+            <div class="admin-phone-cell">
+              <img src="${p.image}" alt="${p.name}" class="admin-phone-img">
+              <div>
+                <strong>${p.name}</strong>
+                <div style="font-size: 0.75rem; color: var(--accent-purple);">${p.brand} (${p.releaseYear})</div>
+              </div>
+            </div>
+          </td>
+          <td><strong>${p.priceEstimateUZS}</strong><br><small style="color: var(--text-muted);">$${p.priceEstimateUSD}</small></td>
+          <td>${p.quickSpecs.mainCamera}</td>
+          <td>${p.quickSpecs.battery}</td>
+          <td>${p.quickSpecs.chipset}</td>
+          <td><span style="color: var(--accent-cyan);">${p.bodyAndBuild ? p.bodyAndBuild.waterResistance : p.quickSpecs.protection}</span></td>
+          <td>
+            <button class="admin-action-btn btn-edit" onclick="editPhone('${p.id}')" title="Tahrirlash"><i class="fa-solid fa-pen-to-square"></i></button>
+            <button class="admin-action-btn btn-del" onclick="deletePhone('${p.id}', '${p.name}')" title="O'chirish"><i class="fa-solid fa-trash-can"></i></button>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    // Live search
+    let searchTimer;
+    document.getElementById('adminSearchInput').addEventListener('input', (e) => {
+      clearTimeout(searchTimer);
+      searchTimer = setTimeout(() => {
+        loadPhones(e.target.value);
+      }, 250);
+    });
+
+    // Delete phone
+    async function deletePhone(id, name) {
+      if (!confirm(`Haqiqatan ham "${name}" telefonini bazadan o'chirmoqchimisiz?`)) return;
+
+      try {
+        const res = await fetch(`/api/phones/${id}`, { method: 'DELETE' });
+        const data = await res.json();
+        if (data.success) {
+          alert('Telefon bazadan o\'chirildi!');
+          loadPhones();
+          loadStats();
+        } else {
+          alert(data.error || 'Xatolik yuz berdi');
+        }
+      } catch (err) {
+        alert('Server xatosi: ' + err.message);
+      }
+    }
+
+    // Open Add Modal
+    const modalBackdrop = document.getElementById('addPhoneModalBackdrop');
+    const addModal = document.getElementById('addPhoneModal');
+
+    document.getElementById('openAddPhoneModalBtn').addEventListener('click', () => {
+      document.getElementById('phoneForm').reset();
+      document.getElementById('editPhoneId').value = '';
+      document.getElementById('modalFormTitle').innerHTML = '<i class="fa-solid fa-plus text-accent"></i> Yangi Smartfon Qo\'shish';
+      addModal.classList.add('active');
+      modalBackdrop.classList.add('active');
+    });
+
+    document.getElementById('closeAddModalBtn').addEventListener('click', closeModal);
+    document.getElementById('cancelFormBtn').addEventListener('click', closeModal);
+    modalBackdrop.addEventListener('click', closeModal);
+
+    function closeModal() {
+      addModal.classList.remove('active');
+      modalBackdrop.classList.remove('active');
+    }
+
+    // Edit Phone
+    function editPhone(id) {
+      const p = adminPhones.find(item => item.id === id);
+      if (!p) return;
+
+      document.getElementById('editPhoneId').value = p.id;
+      document.getElementById('formName').value = p.name;
+      document.getElementById('formBrand').value = p.brand;
+      document.getElementById('formCategory').value = p.category;
+      document.getElementById('formBadge').value = p.badge;
+      document.getElementById('formPriceUSD').value = p.priceEstimateUSD;
+      document.getElementById('formPriceUZS').value = p.priceEstimateUZS;
+      document.getElementById('formImage').value = p.image;
+      document.getElementById('formYear').value = p.releaseYear;
+      document.getElementById('formCamMain').value = p.quickSpecs.mainCamera;
+      document.getElementById('formBatteryCap').value = p.quickSpecs.battery;
+      document.getElementById('formDisplay').value = p.quickSpecs.display;
+      document.getElementById('formChipset').value = p.quickSpecs.chipset;
+      document.getElementById('formProtection').value = p.quickSpecs.protection;
+
+      document.getElementById('modalFormTitle').innerHTML = '<i class="fa-solid fa-pen-to-square text-cyan"></i> Smartfonni Tahrirlash';
+      addModal.classList.add('active');
+      modalBackdrop.classList.add('active');
+    }
+
+    // Submit form (Create or Update)
+    document.getElementById('phoneForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const editId = document.getElementById('editPhoneId').value;
+
+      const payload = {
+        name: document.getElementById('formName').value.trim(),
+        brand: document.getElementById('formBrand').value,
+        category: document.getElementById('formCategory').value,
+        badge: document.getElementById('formBadge').value.trim() || 'Yangi Model',
+        priceEstimateUSD: parseFloat(document.getElementById('formPriceUSD').value),
+        priceEstimateUZS: document.getElementById('formPriceUZS').value.trim(),
+        image: document.getElementById('formImage').value.trim() || 'https://images.unsplash.com/photo-1511707171634-5f897ff02560?auto=format&fit=crop&w=800&q=80',
+        releaseYear: parseInt(document.getElementById('formYear').value) || 2024,
+        rating: 9.3,
+        quickSpecs: {
+          display: document.getElementById('formDisplay').value.trim(),
+          mainCamera: document.getElementById('formCamMain').value.trim(),
+          battery: document.getElementById('formBatteryCap').value.trim(),
+          chipset: document.getElementById('formChipset').value.trim(),
+          protection: document.getElementById('formProtection').value.trim()
+        },
+        display: {
+          size: document.getElementById('formDisplay').value.trim(),
+          type: 'AMOLED 120Hz',
+          resolution: 'FHD+ / QHD+',
+          peakBrightness: '2500 nits',
+          glassProtection: 'Corning Gorilla Glass Victus'
+        },
+        camera: {
+          overview: document.getElementById('formCamMain').value.trim(),
+          mainSensor: {
+            mp: document.getElementById('formCamMain').value.trim(),
+            sensorSize: '1/1.3" Sensor',
+            aperture: 'f/1.8',
+            ois: 'OIS mavjud'
+          },
+          telephoto: { tele1: document.getElementById('formCamZoom').value.trim() },
+          ultrawide: '12 MP Ultrawide',
+          frontCamera: '32 MP Selfi',
+          videoCapabilities: '4K@60fps'
+        },
+        battery: {
+          capacity: document.getElementById('formBatteryCap').value.trim(),
+          wiredCharging: document.getElementById('formBatteryCharging').value.trim(),
+          wirelessCharging: '15W simsiz',
+          screenOnTime: '8.5 - 9.5 soat faol ekran',
+          chargerInBox: document.getElementById('formChargerInBox').value
+        },
+        performanceHardware: {
+          chipset: document.getElementById('formChipset').value.trim(),
+          gpu: 'Adreno / Mali GPU',
+          coolingSystem: 'Bug\'lanish kamerasi (Vapor chamber)',
+          ramOptions: '12 GB LPDDR5X',
+          storageOptions: '256 GB / 512 GB UFS 4.0'
+        },
+        bodyAndBuild: {
+          materials: 'Alyuminiy / Shisha',
+          dimensions: '162 x 75 x 8.5 mm',
+          weight: '210 gramm',
+          waterResistance: document.getElementById('formProtection').value.trim(),
+          audio: 'Stereo dinamiklar'
+        },
+        connectivity: {
+          wifi: 'Wi-Fi 7',
+          usb: 'USB Type-C',
+          nfc: 'Mavjud'
+        },
+        verdictHardware: {
+          pros: ['Zo\'r apparat xususiyatlari', 'Tezkor quvvatlash'],
+          cons: ['Nisbatan yuqori narx'],
+          bestFor: 'Universal kundalik va og\'ir ishlar uchun'
+        }
+      };
+
+      try {
+        let res;
+        if (editId) {
+          res = await fetch(`/api/phones/${editId}`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+          });
+        } else {
+          res = await fetch('/api/phones', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+          });
+        }
+
+        const data = await res.json();
+        if (data.success) {
+          alert(editId ? 'Telefon ma\'lumotlari yangilandi!' : 'Yangi telefon bazaga muvaffaqiyatli qo\'shildi!');
+          closeModal();
+          loadPhones();
+          loadStats();
+        } else {
+          alert(data.error || 'Xatolik yuz berdi');
+        }
+      } catch (err) {
+        alert('Server xatosi: ' + err.message);
+      }
+    });
+
+    // Initialize
+    loadStats();
+    loadPhones();
+  </script>
+</body>
+</html>

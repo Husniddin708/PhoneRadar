@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="uz" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kamera, Batareya va Ekran Apparati | Chuqur Texnik Tahlil | PhoneRadar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-container">
+      <a href="index.html" class="brand-logo">
+        <div class="logo-icon"><i class="fa-solid fa-mobile-screen-button"></i></div>
+        <div class="logo-text">
+          <span class="logo-title">PHONE<span class="accent-text">RADAR</span></span>
+          <span class="logo-sub">HARDWARE PORTAL</span>
+        </div>
+      </a>
+
+      <nav class="nav-menu">
+        <a href="index.html" class="nav-link"><i class="fa-solid fa-house"></i> Bosh Sahifa</a>
+        <a href="catalog.html" class="nav-link"><i class="fa-solid fa-layer-group"></i> Telefonlar Kataloqi</a>
+        <a href="advisor.html" class="nav-link"><i class="fa-solid fa-wand-magic-sparkles"></i> Aqlli Maslahatchi</a>
+        <a href="guide.html" class="nav-link"><i class="fa-solid fa-compass"></i> Xarid Qo'llanmasi</a>
+        <a href="hardware.html" class="nav-link active"><i class="fa-solid fa-camera"></i> Kamera & Batareya</a>
+        <a href="compare.html" class="nav-link"><i class="fa-solid fa-code-compare"></i> Taqqoslash</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="compare-btn-header" id="compareDrawerBtn" title="Taqqoslovchi">
+          <i class="fa-solid fa-code-compare"></i>
+          <span>Taqqoslash</span>
+          <span class="compare-count-badge" id="compareBadgeCount">0</span>
+        </button>
+        <button class="theme-toggle-btn" id="themeToggleBtn"><i class="fa-solid fa-moon" id="themeIcon"></i></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Dedicated Hardware Deep Dive Page -->
+  <main class="section deep-dive-section" style="padding-top: 4rem;">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <span class="section-tag"><i class="fa-solid fa-microchip"></i> Alohida Sahifa</span>
+          <h1 class="section-title">Kamera, Batareya va Ekran <span class="gradient-text">Apparat Tahlili</span></h1>
+          <p class="section-desc">Hech qanday dasturiy kodlarsiz — faqat jismoniy datchiklar, linzalar, batareya katodlari va displey nits texnologiyalari.</p>
+        </div>
+      </div>
+
+      <!-- Tech Tabs -->
+      <div class="tech-tabs-header">
+        <button class="tech-tab-btn active" data-tab="tab-camera" id="tabCameraBtn">
+          <i class="fa-solid fa-camera"></i> Kameralar Apparati
+        </button>
+        <button class="tech-tab-btn" data-tab="tab-battery" id="tabBatteryBtn">
+          <i class="fa-solid fa-bolt"></i> Batareya & Zaryad
+        </button>
+        <button class="tech-tab-btn" data-tab="tab-display" id="tabDisplayBtn">
+          <i class="fa-solid fa-desktop"></i> Ekran & Nits
+        </button>
+        <button class="tech-tab-btn" data-tab="tab-recs" id="tabRecsBtn">
+          <i class="fa-solid fa-star"></i> Ehtiyoj Bo'yicha Tanlov
+        </button>
+      </div>
+
+      <!-- Tab Contents -->
+      <div class="tech-tab-pane active" id="tab-camera">
+        <div class="tech-grid-2col">
+          <div class="tech-text-box">
+            <h3><i class="fa-solid fa-camera-retro text-accent"></i> Kameralar qanday tanlanadi?</h3>
+            <p>Smartfon kamerasida eng asosiy qism — <strong>Sensor (Matritsa) o'lchami</strong> va <strong>OIS (Optik barqarorlashtirish)</strong> mexanizmidir.</p>
+            <div class="info-callout">
+              <strong><i class="fa-solid fa-lightbulb"></i> Muhim qoida:</strong> 1 dyuymli 50 MP sensor har doim 1/1.52 dyuymli 108 MP yoki 200 MP sensordan yaxshiroq surat oladi, chunki har bir pikselning o'lchami yirik bo'ladi va ko'proq yorug'lik yutadi.
+            </div>
+            <div class="sensor-comparison-chart">
+              <div class="sensor-box sensor-1inch">
+                <span>1.0" Dyuym (Eng Yirik)</span>
+                <small>Xiaomi 14 Ultra, Vivo X100 Pro</small>
+              </div>
+              <div class="sensor-box sensor-113">
+                <span>1/1.3" Sensor</span>
+                <small>S24 Ultra, iPhone 16 Pro Max</small>
+              </div>
+              <div class="sensor-box sensor-115">
+                <span>1/1.56" Sensor</span>
+                <small>OnePlus 12, Galaxy A55</small>
+              </div>
+            </div>
+          </div>
+          <div class="tech-feature-cards">
+            <div class="feature-card">
+              <div class="f-icon"><i class="fa-solid fa-wave-square"></i></div>
+              <div class="f-content">
+                <h4>OIS (Optik Stabilizatsiya)</h4>
+                <p>Linza atrofidagi miniatyura magnitlar qo'l qaltirashini yutadi. Tunda xira bo'lmagan, harakatda silliq video olish uchun shart.</p>
+              </div>
+            </div>
+            <div class="feature-card">
+              <div class="f-icon"><i class="fa-solid fa-binoculars"></i></div>
+              <div class="f-content">
+                <h4>Periskop Zum (Optik 5x)</h4>
+                <p>Yorug'likni prizma orqali gorizontal linzalarga yo'naltiradi. Uzoqdagi obyektlarni 100% tiniq optik sifatda yaqinlashtiradi.</p>
+              </div>
+            </div>
+            <div class="feature-card">
+              <div class="f-icon"><i class="fa-solid fa-circle-dot"></i></div>
+              <div class="f-content">
+                <h4>Diafragma (f/1.6 vs f/2.4)</h4>
+                <p>f raqami qancha kichik bo'lsa, linza shuncha keng ochiladi va qorong'i xonada ham kunduzgidek yorug' surat beradi.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tech-tab-pane" id="tab-battery">
+        <div class="tech-grid-2col">
+          <div class="tech-text-box">
+            <h3><i class="fa-solid fa-bolt-lightning text-accent"></i> Batareya & Tez Zaryadlash Apparati</h3>
+            <p>Zamonaviy akkumulyatorlarda sig'im (mAh) bilan birga zaryadlash tezligi (Watt) va xavfsizlik chiplari hal qiluvchi ahamiyatga ega.</p>
+            <div class="charging-speed-table">
+              <div class="table-row head">
+                <span>Quvvat (Watt)</span>
+                <span>0 dan 100% gacha vaqt</span>
+                <span>Qutida blok bormi?</span>
+              </div>
+              <div class="table-row">
+                <span><strong>25W</strong> (Samsung)</span>
+                <span>~75-80 daqiqa</span>
+                <span class="cross">Yo'q (alohida)</span>
+              </div>
+              <div class="table-row">
+                <span><strong>30W-35W</strong> (Apple)</span>
+                <span>~90 daqiqa</span>
+                <span class="cross">Yo'q (alohida)</span>
+              </div>
+              <div class="table-row">
+                <span><strong>67W</strong> (Xiaomi/Poco)</span>
+                <span>~38-42 daqiqa</span>
+                <span class="check">Bor (qutida)</span>
+              </div>
+              <div class="table-row highlight">
+                <span><strong>100W - 120W</strong></span>
+                <span><strong>19 - 26 daqiqa!</strong></span>
+                <span class="check">Bor (qutida)</span>
+              </div>
+            </div>
+          </div>
+          <div class="tech-feature-cards">
+            <div class="feature-card">
+              <div class="f-icon"><i class="fa-solid fa-shield-virus"></i></div>
+              <div class="f-content">
+                <h4>120W Batareyani buzmaydimi?</h4>
+                <p>Ichkarida 2 ta alohida batareya bloki o'rnatilgan (har biriga 60W taqsimlanadi). Maxsus termal chip haroratni nazorat qiladi va xizmat muddatini 1600 siklgacha saqlaydi.</p>
+              </div>
+            </div>
+            <div class="feature-card">
+              <div class="f-icon"><i class="fa-solid fa-battery-half"></i></div>
+              <div class="f-content">
+                <h4>80% Oltin Qoidasi</h4>
+                <p>Batareyani doim 20% dan 80% gacha bo'lgan oraliqda zaryadlash uning degradatsiyasini (qarishini) 2 barobar sekinlashtiradi.</p>
+              </div>
+            </div>
+            <div class="feature-card">
+              <div class="f-icon"><i class="fa-solid fa-tower-broadcast"></i></div>
+              <div class="f-content">
+                <h4>Simsiz va Teskari Zaryad</h4>
+                <p>Qi2 va MagSafe simsiz zaryadlash kabel tiqishdan xalos qiladi. Teskari simsiz quvvat orqali telefon orqasiga naushnik yoki aqlli soat qo'yib quvvatlash mumkin.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tech-tab-pane" id="tab-display">
+        <div class="tech-grid-2col">
+          <div class="tech-text-box">
+            <h3><i class="fa-solid fa-tv text-accent"></i> Displey: AMOLED, Nits va PWM</h3>
+            <p>Har kuni o'rtacha 5-7 soat telefon ekraniga qaraymiz. Shu sababli displeyning apparat sifati ko'z salomatligi uchun bevosita javobgardir.</p>
+            <div class="info-callout">
+              <strong><i class="fa-solid fa-eye"></i> PWM (Chaqnosh) nima?</strong> OLED displeylar yorqinlikni kamaytirganda miltillaydi. Agar chastota past bo'lsa, ko'z tez charchaydi. 1920Hz-3840Hz yuqori chastotali PWM filtri bor ekranlarni tanlang.
+            </div>
+          </div>
+          <div class="tech-feature-cards">
+            <div class="feature-card">
+              <div class="f-icon"><i class="fa-solid fa-sun"></i></div>
+              <div class="f-content">
+                <h4>Nits (Yorqinlik Darajasi)</h4>
+                <p>1000 nits bino ichida yetarli, lekin O'zbekistonning jazirama quyoshi ostida matnlarni ko'rish uchun 2000-4500 nits cho'qqi yorqinlikka ega LTPO displeylar darkor.</p>
+              </div>
+            </div>
+            <div class="feature-card">
+              <div class="f-icon"><i class="fa-solid fa-gauge-high"></i></div>
+              <div class="f-content">
+                <h4>LTPO 1Hz - 120Hz Adaptiv Tezlik</h4>
+                <p>Ekranda harakat bo'lmaganda 1Hz ga tushadi, barmog'ingiz tekkanda darhol 120Hz ga chiqadi. Bu batareyani 25% tejaydi.</p>
+              </div>
+            </div>
+            <div class="feature-card">
+              <div class="f-icon"><i class="fa-solid fa-shield"></i></div>
+              <div class="f-content">
+                <h4>Corning Gorilla Armor & Victus 2</h4>
+                <p>Gorilla Armor ekranning akslanishini 75% ga kamaytiradi (S24 Ultra da). Victus 2 esa 1 metr balandlikdan qattiq beton yuzaga tushishga bardosh beradi.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tech-tab-pane" id="tab-recs">
+        <div class="recs-grid" id="recsGridContainer"></div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-container">
+      <div class="footer-col brand-col">
+        <div class="brand-logo footer-logo">
+          <div class="logo-icon"><i class="fa-solid fa-mobile-screen-button"></i></div>
+          <span class="logo-title">PHONE<span class="accent-text">RADAR</span></span>
+        </div>
+        <p class="footer-desc">Dunyodagi smartfonlarning xolis apparat tahlili portali.</p>
+      </div>
+      <div class="footer-col">
+        <h4 class="footer-heading">Sahifalar</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Bosh Sahifa</a></li>
+          <li><a href="catalog.html">Telefonlar Kataloqi</a></li>
+          <li><a href="advisor.html">Aqlli Maslahatchi</a></li>
+          <li><a href="guide.html">Xarid Qo'llanmasi</a></li>
+          <li><a href="hardware.html">Kamera & Batareya</a></li>
+          <li><a href="compare.html">Taqqoslash</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container footer-bottom-inner">
+        <p>© 2024–2026 PHONERADAR. Barcha huquqlar himoyalangan.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/phones-data.js"></script>
+  <script src="js/guide-data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

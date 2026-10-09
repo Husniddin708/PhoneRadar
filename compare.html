@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="uz" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smartfonlarni Taqqoslash | Yonma-yon Apparat Solishtiruvi | PhoneRadar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-container">
+      <a href="index.html" class="brand-logo">
+        <div class="logo-icon"><i class="fa-solid fa-mobile-screen-button"></i></div>
+        <div class="logo-text">
+          <span class="logo-title">PHONE<span class="accent-text">RADAR</span></span>
+          <span class="logo-sub">HARDWARE PORTAL</span>
+        </div>
+      </a>
+
+      <nav class="nav-menu">
+        <a href="index.html" class="nav-link"><i class="fa-solid fa-house"></i> Bosh Sahifa</a>
+        <a href="catalog.html" class="nav-link"><i class="fa-solid fa-layer-group"></i> Telefonlar Kataloqi</a>
+        <a href="advisor.html" class="nav-link"><i class="fa-solid fa-wand-magic-sparkles"></i> Aqlli Maslahatchi</a>
+        <a href="guide.html" class="nav-link"><i class="fa-solid fa-compass"></i> Xarid Qo'llanmasi</a>
+        <a href="hardware.html" class="nav-link"><i class="fa-solid fa-camera"></i> Kamera & Batareya</a>
+        <a href="compare.html" class="nav-link active"><i class="fa-solid fa-code-compare"></i> Taqqoslash</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="compare-btn-header" id="compareDrawerBtn" title="Taqqoslovchi">
+          <i class="fa-solid fa-code-compare"></i>
+          <span>Taqqoslash</span>
+          <span class="compare-count-badge" id="compareBadgeCount">0</span>
+        </button>
+        <button class="theme-toggle-btn" id="themeToggleBtn"><i class="fa-solid fa-moon" id="themeIcon"></i></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Dedicated Comparison Page -->
+  <main class="section" style="padding-top: 4rem; min-height: 80vh;">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <span class="section-tag"><i class="fa-solid fa-code-compare"></i> Alohida Sahifa</span>
+          <h1 class="section-title">Smartfonlarni <span class="gradient-text">Yonma-yon Taqqoslash</span></h1>
+          <p class="section-desc">2 yoki 3 ta smartfonni tanlab ularning apparat parametrlarini solishtiring.</p>
+        </div>
+        <div>
+          <button class="btn btn-secondary" id="clearComparePageBtn"><i class="fa-solid fa-trash-can"></i> Ro'yxatni Tozalash</button>
+        </div>
+      </div>
+
+      <!-- Quick Selectors Row -->
+      <div style="background: var(--bg-surface); border: 1px solid var(--border-glass); border-radius: var(--radius-xl); padding: 1.8rem; margin-bottom: 2.5rem; box-shadow: var(--shadow-md);">
+        <h3 style="font-size: 1.1rem; margin-bottom: 1.2rem; color: var(--accent-cyan);">
+          <i class="fa-solid fa-plus-circle"></i> Taqqoslash uchun telefonlarni tanlang:
+        </h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.2rem;" id="comparePickersRow">
+          <div>
+            <label style="font-size: 0.8rem; color: var(--text-muted); display: block; margin-bottom: 0.4rem;">1-Smartfon:</label>
+            <select class="form-select compare-picker" data-slot="0" id="slotPicker0"></select>
+          </div>
+          <div>
+            <label style="font-size: 0.8rem; color: var(--text-muted); display: block; margin-bottom: 0.4rem;">2-Smartfon:</label>
+            <select class="form-select compare-picker" data-slot="1" id="slotPicker1"></select>
+          </div>
+          <div>
+            <label style="font-size: 0.8rem; color: var(--text-muted); display: block; margin-bottom: 0.4rem;">3-Smartfon (ixtiyoriy):</label>
+            <select class="form-select compare-picker" data-slot="2" id="slotPicker2"></select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Comparison Matrix Table Card -->
+      <div class="admin-table-card" style="padding: 2rem;" id="compareTableContainer">
+        <div id="compareMatrixContent"></div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-container">
+      <div class="footer-col brand-col">
+        <div class="brand-logo footer-logo">
+          <div class="logo-icon"><i class="fa-solid fa-mobile-screen-button"></i></div>
+          <span class="logo-title">PHONE<span class="accent-text">RADAR</span></span>
+        </div>
+        <p class="footer-desc">Dunyodagi smartfonlarning apparat imkoniyatlari portali.</p>
+      </div>
+      <div class="footer-col">
+        <h4 class="footer-heading">Sahifalar</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Bosh Sahifa</a></li>
+          <li><a href="catalog.html">Telefonlar Kataloqi</a></li>
+          <li><a href="advisor.html">Aqlli Maslahatchi</a></li>
+          <li><a href="guide.html">Xarid Qo'llanmasi</a></li>
+          <li><a href="hardware.html">Kamera & Batareya</a></li>
+          <li><a href="compare.html">Taqqoslash</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container footer-bottom-inner">
+        <p>© 2024–2026 PHONERADAR. Barcha huquqlar himoyalangan.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/phones-data.js"></script>
+  <script src="js/guide-data.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", async () => {
+      let allPhones = [];
+      try {
+        const res = await fetch("/api/phones");
+        if (res.ok) {
+          const json = await res.json();
+          allPhones = json.data;
+        }
+      } catch (e) {}
+
+      if (allPhones.length === 0 && typeof PHONES_DATABASE !== "undefined") {
+        allPhones = PHONES_DATABASE;
+      }
+
+      let comparedIds = JSON.parse(localStorage.getItem("phoneradar_compare") || "[]");
+      if (comparedIds.length === 0) {
+        comparedIds = ["samsung-s24-ultra", "iphone-16-pro-max"];
+      }
+
+      // Populate pickers
+      [0, 1, 2].forEach(slotIdx => {
+        const picker = document.getElementById(`slotPicker${slotIdx}`);
+        picker.innerHTML = '<option value="">-- Tanlang --</option>' + allPhones.map(p => `
+          <option value="${p.id}" ${comparedIds[slotIdx] === p.id ? 'selected' : ''}>${p.name} (~$${p.priceEstimateUSD})</option>
+        `).join('');
+
+        picker.addEventListener("change", (e) => {
+          const val = e.target.value;
+          if (val) {
+            comparedIds[slotIdx] = val;
+          } else {
+            comparedIds.splice(slotIdx, 1);
+          }
+          // unique
+          comparedIds = [...new Set(comparedIds.filter(Boolean))];
+          localStorage.setItem("phoneradar_compare", JSON.stringify(comparedIds));
+          renderPageComparison();
+        });
+      });
+
+      document.getElementById("clearComparePageBtn").addEventListener("click", () => {
+        comparedIds = [];
+        localStorage.setItem("phoneradar_compare", "[]");
+        [0, 1, 2].forEach(i => document.getElementById(`slotPicker${i}`).value = "");
+        renderPageComparison();
+      });
+
+      function renderPageComparison() {
+        const matrixEl = document.getElementById("compareMatrixContent");
+        const activePhones = comparedIds.map(id => allPhones.find(p => p.id === id)).filter(Boolean);
+
+        if (activePhones.length === 0) {
+          matrixEl.innerHTML = `
+            <div style="text-align: center; padding: 3rem; color: var(--text-muted);">
+              <i class="fa-solid fa-scale-balanced" style="font-size: 3rem; margin-bottom: 1rem; display: block;"></i>
+              <p>Taqqoslash uchun yuqoridagi ro'yxatdan kamida bitta yoki ikkita telefon tanlang.</p>
+            </div>
+          `;
+          return;
+        }
+
+        matrixEl.innerHTML = `
+          <div style="overflow-x: auto;">
+            <table class="compare-matrix-table">
+              <thead>
+                <tr>
+                  <th style="width: 20%;">Apparat Bo'limi</th>
+                  ${activePhones.map(p => `
+                    <th>
+                      <div style="text-align: center;">
+                        <img src="${p.image}" style="height: 100px; margin: 0 auto 0.6rem; object-fit: contain;">
+                        <strong style="font-size: 1.1rem; display: block;">${p.name}</strong>
+                        <div style="color: var(--accent-green); font-size: 0.95rem; font-weight: 700; margin-top: 0.2rem;">${p.priceEstimateUZS}</div>
+                        <small style="color: var(--text-muted);">$${p.priceEstimateUSD}</small>
+                      </div>
+                    </th>
+                  `).join("")}
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Ekspert Apparat Bali</strong></td>
+                  ${activePhones.map(p => `<td><strong style="font-size: 1.2rem; color: var(--accent-cyan);">${p.hardwareScores ? p.hardwareScores.overall : p.rating} / 100</strong></td>`).join("")}
+                </tr>
+                <tr>
+                  <td><strong>Displey & Nits Yorqinligi</strong></td>
+                  ${activePhones.map(p => `<td>${p.display.type}<br><strong>${p.display.size}</strong> (${p.display.resolution})<br>Yorqinlik: <strong style="color: var(--accent-amber);">${p.display.peakBrightness}</strong><br>Himoya: ${p.display.glassProtection}</td>`).join("")}
+                </tr>
+                <tr>
+                  <td><strong>Kamera Sensori & OIS</strong></td>
+                  ${activePhones.map(p => `<td><strong>${p.camera.mainSensor.mp}</strong><br>O'lcham: ${p.camera.mainSensor.sensorSize}<br>Diafragma: ${p.camera.mainSensor.aperture}<br>Stabilizatsiya: <strong style="color: var(--accent-cyan);">${p.camera.mainSensor.ois}</strong></td>`).join("")}
+                </tr>
+                <tr>
+                  <td><strong>Optik Zum (Telefoto)</strong></td>
+                  ${activePhones.map(p => `<td>${p.camera.telephoto.tele1 || "Mavjud emas"}<br>${p.camera.telephoto.tele2 || ""}</td>`).join("")}
+                </tr>
+                <tr>
+                  <td><strong>Batareya & Tezkor Zaryad</strong></td>
+                  ${activePhones.map(p => `<td><strong style="color: var(--accent-green); font-size: 1.05rem;">${p.battery.capacity}</strong><br>Simli zaryad: <strong>${p.battery.wiredCharging}</strong><br>Simsiz: ${p.battery.wirelessCharging}<br>Faol ekran vaqti: ${p.battery.screenOnTime}<br>Qutida blok: <strong>${p.battery.chargerInBox}</strong></td>`).join("")}
+                </tr>
+                <tr>
+                  <td><strong>Chipset & Sovitish</strong></td>
+                  ${activePhones.map(p => `<td><strong>${p.performanceHardware.chipset}</strong><br>GPU: ${p.performanceHardware.gpu}<br>Sovitish: ${p.performanceHardware.coolingSystem}<br>RAM: ${p.performanceHardware.ramOptions}</td>`).join("")}
+                </tr>
+                <tr>
+                  <td><strong>Korpus & IP Suvdan Himoya</strong></td>
+                  ${activePhones.map(p => `<td>Suvdan himoya: <strong style="color: var(--accent-cyan); font-size: 1.05rem;">${p.bodyAndBuild ? p.bodyAndBuild.waterResistance : p.quickSpecs.protection}</strong><br>Materiallar: ${p.bodyAndBuild ? p.bodyAndBuild.materials : ''}<br>Og'irligi: ${p.bodyAndBuild ? p.bodyAndBuild.weight : ''}</td>`).join("")}
+                </tr>
+                <tr>
+                  <td><strong>Eng Kuchli Jihati & Kimga Mos</strong></td>
+                  ${activePhones.map(p => `<td style="color: var(--accent-purple); font-size: 0.88rem;">${p.verdictHardware ? p.verdictHardware.bestFor : ''}</td>`).join("")}
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        `;
+      }
+
+      renderPageComparison();
+    });
+  </script>
+</body>
+</html>

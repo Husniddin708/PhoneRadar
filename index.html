@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="uz" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SmartPhone Hardware Portal | Dunyo Smartfonlari, Kamera va Batareya Tahlili, Xarid Qo'llanmasi</title>
+  <meta name="description" content="Butun dunyodagi eng mashhur telefonlar apparat (hardware) tahlili: kamera datchiklari, batareya va zaryad tezligi, ekran, protsessor, korpus himoyasi va xarid bo'yicha professional maslahatlar.">
+  <meta name="keywords" content="telefonlar, smartfon narxlari, qaysi telefonni olish kerak, kamera tahlili, batareya hajmi, samsung, apple iphone, xiaomi, taqqoslash">
+  <meta property="og:title" content="SmartPhone Hardware Portal — Dunyo Smartfonlari va Xarid Maslahatlari">
+  <meta property="og:description" content="Megapikselga aldanmang! Telefon kameralari, batareya, displey va protsessorning barcha apparat xususiyatlari.">
+  <meta property="og:type" content="website">
+
+  <!-- Google Fonts: Outfit & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div class="top-announcement">
+    <div class="container announcement-inner">
+      <span><i class="fa-solid fa-microchip"></i> <strong>100% Apparat (Hardware) Tahlili:</strong> Ichki dasturiy kodlarsiz — faqat jismoniy kamera, batareya, ekran va korpus imkoniyatlari!</span>
+      <span class="badge-pill">2024–2025 Yangilangan Baza</span>
+    </div>
+  </div>
+
+  <!-- Header & Navigation -->
+  <header class="site-header" id="header">
+    <div class="container header-container">
+      <a href="#hero" class="brand-logo" id="brandLogo">
+        <div class="logo-icon">
+          <i class="fa-solid fa-mobile-screen-button"></i>
+        </div>
+        <div class="logo-text">
+          <span class="logo-title">PHONE<span class="accent-text">RADAR</span></span>
+          <span class="logo-sub">HARDWARE & BUYER'S GUIDE</span>
+        </div>
+      </a>
+
+      <nav class="nav-menu" id="navMenu">
+        <a href="index.html" class="nav-link active"><i class="fa-solid fa-house"></i> Bosh Sahifa</a>
+        <a href="catalog.html" class="nav-link"><i class="fa-solid fa-layer-group"></i> Telefonlar Kataloqi</a>
+        <a href="advisor.html" class="nav-link"><i class="fa-solid fa-wand-magic-sparkles"></i> Aqlli Maslahatchi</a>
+        <a href="guide.html" class="nav-link"><i class="fa-solid fa-compass"></i> Xarid Qo'llanmasi</a>
+        <a href="hardware.html" class="nav-link"><i class="fa-solid fa-camera"></i> Kamera & Batareya</a>
+        <a href="compare.html" class="nav-link"><i class="fa-solid fa-code-compare"></i> Taqqoslash</a>
+      </nav>
+
+      <div class="header-actions">
+        <!-- Compare Trigger Button -->
+        <button class="compare-btn-header" id="compareDrawerBtn" title="Taqqoslovchi">
+          <i class="fa-solid fa-code-compare"></i>
+          <span>Taqqoslash</span>
+          <span class="compare-count-badge" id="compareBadgeCount">0</span>
+        </button>
+
+        <!-- Theme Toggle Button -->
+        <button class="theme-toggle-btn" id="themeToggleBtn" title="Mavzuni almashtirish">
+          <i class="fa-solid fa-moon" id="themeIcon"></i>
+        </button>
+
+        <!-- Mobile Menu Toggle -->
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menyu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section" id="hero">
+    <div class="hero-glow-blob hero-glow-1"></div>
+    <div class="hero-glow-blob hero-glow-2"></div>
+    <div class="container hero-container">
+      <div class="hero-content">
+        <div class="hero-tag">
+          <i class="fa-solid fa-shield-halved"></i> Xolis Texnik Hardware Ekspertizasi
+        </div>
+        <h1 class="hero-title">
+          Telefon Tanlashda <span class="gradient-text">Adashmang!</span> Haqiqiy Apparat Imkoniyatlarini Biling.
+        </h1>
+        <p class="hero-desc">
+          Megapiksel reklamalariga, marketing aldovlariga uchmang. Dunyodagi barcha yetakchi smartfonlarning kamerasi, batareyasi, ekrani, protsessori va suvdan himoyasi bo'yicha xolis apparat tahlili.
+        </p>
+        
+        <div class="hero-buttons">
+          <a href="advisor.html" class="btn btn-primary btn-glow" id="heroAdvisorBtn">
+            <i class="fa-solid fa-wand-magic-sparkles"></i> Menga Qaysi Telefon Mos? (Test)
+          </a>
+          <a href="catalog.html" class="btn btn-secondary" id="heroCatalogBtn">
+            <i class="fa-solid fa-layer-group"></i> Telefonlar Kataloqi
+          </a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat-item">
+            <span class="stat-number">200+ MP</span>
+            <span class="stat-label">Sensorlar Tahlili</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-number">120W+</span>
+            <span class="stat-label">Tezkor Quvvatlash</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-number">IP68</span>
+            <span class="stat-label">Suv & Chang Himoyasi</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-number">0% OS</span>
+            <span class="stat-label">100% Apparat</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero Visual Card (Comparison / Feature Showcase) -->
+      <div class="hero-visual">
+        <div class="hero-card-glass">
+          <div class="hero-card-header">
+            <div class="pulse-indicator"></div>
+            <span>Apparat Tekshiruvi: Flagman vs O'rta Toifa</span>
+          </div>
+          <div class="hero-showcase-item">
+            <div class="spec-row">
+              <span class="spec-name"><i class="fa-solid fa-camera-retro"></i> Kamera Sensori:</span>
+              <span class="spec-val highlight-green">1.0" Sony LYT-900 (Haqiqiy Dyum)</span>
+            </div>
+            <div class="spec-bar-wrap">
+              <div class="spec-bar-fill" style="width: 98%;"></div>
+            </div>
+          </div>
+          <div class="hero-showcase-item">
+            <div class="spec-row">
+              <span class="spec-name"><i class="fa-solid fa-bolt"></i> Batareya & Tez Zaryad:</span>
+              <span class="spec-val highlight-cyan">5400 mAh, 100W (26 daqiqada 100%)</span>
+            </div>
+            <div class="spec-bar-wrap">
+              <div class="spec-bar-fill fill-cyan" style="width: 96%;"></div>
+            </div>
+          </div>
+          <div class="hero-showcase-item">
+            <div class="spec-row">
+              <span class="spec-name"><i class="fa-solid fa-sun"></i> Displey Yorqinligi:</span>
+              <span class="spec-val highlight-amber">4500 Nits LTPO 120Hz</span>
+            </div>
+            <div class="spec-bar-wrap">
+              <div class="spec-bar-fill fill-amber" style="width: 99%;"></div>
+            </div>
+          </div>
+          <div class="hero-showcase-item">
+            <div class="spec-row">
+              <span class="spec-name"><i class="fa-solid fa-temperature-arrow-down"></i> Sovitish Tizimi:</span>
+              <span class="spec-val highlight-purple">9140mm² Bug'lanish Kamerasi</span>
+            </div>
+            <div class="spec-bar-wrap">
+              <div class="spec-bar-fill fill-purple" style="width: 95%;"></div>
+            </div>
+          </div>
+          <div class="hero-card-footer">
+            <i class="fa-solid fa-circle-check"></i> Har bir parametr laboratoriya va amaliy apparat sinovlari asosida
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Smart Phone Advisor (Quiz) -->
+  <section class="section smart-advisor-section" id="smartAdvisor">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="section-tag"><i class="fa-solid fa-brain"></i> Interaktiv Maslahatchi</span>
+        <h2 class="section-title">Qaysi Telefon Sizga Mos? <span class="gradient-text">1 Daqiqalik Test</span></h2>
+        <p class="section-desc">Byudjetingiz va asosiy maqsadingizni belgilang — apparat tahlili bo'yicha sizga eng mos keluvchi smartfonlarni aniqlaymiz.</p>
+      </div>
+
+      <div class="advisor-wizard" id="advisorWizard">
+        <!-- Step 1: Budget -->
+        <div class="quiz-step active" id="quizStep1">
+          <div class="step-indicator">1 / 3-qadam: Byudjetingizni tanlang</div>
+          <h3 class="step-question">Telefon uchun qancha mablag' ajratmoqchisiz?</h3>
+          <div class="quiz-options-grid">
+            <button class="quiz-opt-btn" data-step="1" data-value="budget-entry">
+              <div class="opt-icon"><i class="fa-solid fa-coins"></i></div>
+              <div class="opt-info">
+                <strong>$250 - $450 (3.5 - 5.5 mln so'm)</strong>
+                <span>Hamyonbop o'rta toifa, yuqori narx-sifat balansi</span>
+              </div>
+            </button>
+            <button class="quiz-opt-btn" data-step="1" data-value="budget-mid">
+              <div class="opt-icon"><i class="fa-solid fa-money-bill-wave"></i></div>
+              <div class="opt-info">
+                <strong>$500 - $800 (6.5 - 10 mln so'm)</strong>
+                <span>Flagman Qotillari — kuchli quvvat, o'yin va tez zaryad</span>
+              </div>
+            </button>
+            <button class="quiz-opt-btn" data-step="1" data-value="budget-premium">
+              <div class="opt-icon"><i class="fa-solid fa-gem"></i></div>
+              <div class="opt-info">
+                <strong>$1000 va undan yuqori (12+ mln so'm)</strong>
+                <span>Eng ilg'or Premium Flagmanlar: Eng zo'r kameralar va materiallar</span>
+              </div>
+            </button>
+          </div>
+        </div>
+
+        <!-- Step 2: Primary Purpose -->
+        <div class="quiz-step" id="quizStep2">
+          <div class="step-indicator">2 / 3-qadam: Asosiy vazifani tanlang</div>
+          <h3 class="step-question">Siz uchun telefonda qaysi apparat jihati eng muhim?</h3>
+          <div class="quiz-options-grid">
+            <button class="quiz-opt-btn" data-step="2" data-value="priority-camera">
+              <div class="opt-icon"><i class="fa-solid fa-camera"></i></div>
+              <div class="opt-info">
+                <strong>Kamera va Video (Fotografiya)</strong>
+                <span>Katta sensor, OIS barqarorlashtirish, sifatli zum va 4K/8K video</span>
+              </div>
+            </button>
+            <button class="quiz-opt-btn" data-step="2" data-value="priority-gaming">
+              <div class="opt-icon"><i class="fa-solid fa-gamepad"></i></div>
+              <div class="opt-info">
+                <strong>O'yinlar va Maksimal Tezlik</strong>
+                <span>Snapdragon flagman protsessori, kuchli sovitish va 120-165Hz ekran</span>
+              </div>
+            </button>
+            <button class="quiz-opt-btn" data-step="2" data-value="priority-battery">
+              <div class="opt-icon"><i class="fa-solid fa-battery-full"></i></div>
+              <div class="opt-info">
+                <strong>Batareya va Zaryadlash Tezligi</strong>
+                <span>5000-5500 mAh sig'im, 2 kunlik quvvat va 20-30 daqiqada 100% zaryad</span>
+              </div>
+            </button>
+            <button class="quiz-opt-btn" data-step="2" data-value="priority-durability">
+              <div class="opt-icon"><i class="fa-solid fa-shield-halved"></i></div>
+              <div class="opt-info">
+                <strong>Mustahkamlik va Uzoq Yillik Xizmat</strong>
+                <span>IP68 suvdan himoya, titanium yoki aviatsiya alyuminiyi, Gorilla Glass</span>
+              </div>
+            </button>
+          </div>
+        </div>
+
+        <!-- Step 3: Brand Preference -->
+        <div class="quiz-step" id="quizStep3">
+          <div class="step-indicator">3 / 3-qadam: Brend bo'yicha xohish</div>
+          <h3 class="step-question">Qaysi ishlab chiqaruvchini ma'qul ko'rasiz?</h3>
+          <div class="quiz-options-grid">
+            <button class="quiz-opt-btn" data-step="3" data-value="brand-any">
+              <div class="opt-icon"><i class="fa-solid fa-globe"></i></div>
+              <div class="opt-info">
+                <strong>Farqi yo'q (Eng yaxshisi bo'lsa bo'ldi)</strong>
+                <span>Hardware parametrlari bo'yicha eng kuchli variantlarni ko'rsat</span>
+              </div>
+            </button>
+            <button class="quiz-opt-btn" data-step="3" data-value="brand-apple">
+              <div class="opt-icon"><i class="fa-brands fa-apple"></i></div>
+              <div class="opt-info">
+                <strong>Apple iPhone</strong>
+                <span>Eng kuchli video apparati, Ceramic Shield, yuqori xizmat muddati</span>
+              </div>
+            </button>
+            <button class="quiz-opt-btn" data-step="3" data-value="brand-samsung">
+              <div class="opt-icon"><i class="fa-solid fa-mobile-screen"></i></div>
+              <div class="opt-info">
+                <strong>Samsung Galaxy</strong>
+                <span>Eng yorqin AMOLED displey, 200MP sensor, S-Pen va ishonchlilik</span>
+              </div>
+            </button>
+            <button class="quiz-opt-btn" data-step="3" data-value="brand-xiaomi">
+              <div class="opt-icon"><i class="fa-solid fa-bolt"></i></div>
+              <div class="opt-info">
+                <strong>Xiaomi / OnePlus / Poco</strong>
+                <span>120W o'ta tez zaryadlash, 1 dyuymli Sony datchiklari, boy quti to'plami</span>
+              </div>
+            </button>
+          </div>
+        </div>
+
+        <!-- Step 4: Result Card -->
+        <div class="quiz-result" id="quizResult" style="display: none;">
+          <div class="result-badge"><i class="fa-solid fa-award"></i> Sizga Mos Eng Zo'r Tanlov:</div>
+          <div class="result-card" id="advisorResultCard">
+            <!-- Injected dynamically via JS -->
+          </div>
+          <div class="result-actions">
+            <button class="btn btn-secondary" id="restartQuizBtn">
+              <i class="fa-solid fa-rotate-left"></i> Testni qaytadan boshlash
+            </button>
+            <a href="#catalog" class="btn btn-primary" id="seeAllCatalogBtn">
+              <i class="fa-solid fa-arrow-down"></i> Barcha telefonlarni solishtirish
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Phones Catalog Section -->
+  <section class="section catalog-section" id="catalog">
+    <div class="container">
+      <div class="section-header">
+        <div class="header-left">
+          <span class="section-tag"><i class="fa-solid fa-mobile-screen"></i> Global Katalog</span>
+          <h2 class="section-title">Dunyo Smartfonlari <span class="gradient-text">Apparat Bazasi</span></h2>
+          <p class="section-desc">Har bir telefonning kamerasi, batareyasi, ekrani va korpusi tahlil qilingan.</p>
+        </div>
+        <div class="catalog-live-count">
+          Jami: <span id="catalogCount" class="highlight-count">0</span> ta telefon
+        </div>
+      </div>
+
+      <!-- Search & Filters Toolbar -->
+      <div class="catalog-toolbar">
+        <!-- Live Search with Instant Dropdown -->
+        <div class="search-box-wrap">
+          <i class="fa-solid fa-magnifying-glass search-icon"></i>
+          <input type="text" id="phoneSearchInput" class="search-input" placeholder="Model, brend, kamera (200MP, 1 dyuym), protsessor (Snapdragon) yoki batareyani qidiring..." autocomplete="off">
+          <button class="clear-search-btn" id="clearSearchBtn" title="Tozalash"><i class="fa-solid fa-xmark"></i></button>
+          <div class="search-suggestions-dropdown" id="searchSuggestionsDropdown"></div>
+        </div>
+
+        <!-- Brand Filters (Horizontal Scroll / Chips) -->
+        <div class="brand-chips-wrap" id="brandChipsContainer">
+          <!-- Populated by JS -->
+        </div>
+
+        <!-- Category & Sorting Controls -->
+        <div class="filters-secondary-row">
+          <div class="filter-group">
+            <label for="categorySelect"><i class="fa-solid fa-filter"></i> Toifa:</label>
+            <select id="categorySelect" class="filter-select">
+              <option value="all">Barcha toifalar</option>
+              <option value="premium">Premium Flagman ($1000+)</option>
+              <option value="flagship">Flagman ($700 - $1000)</option>
+              <option value="flagship_killer">Flagman Qotillari ($450 - $700)</option>
+              <option value="midrange">O'rta toifa ($250 - $450)</option>
+              <option value="gaming">O'yinbop (Gaming)</option>
+            </select>
+          </div>
+
+          <div class="filter-group">
+            <label for="sortBySelect"><i class="fa-solid fa-arrow-down-short-wide"></i> Saralash:</label>
+            <select id="sortBySelect" class="filter-select">
+              <option value="rating-desc">Ekspert bali (Yuqoridan)</option>
+              <option value="camera-desc">Kamera bali bo'yicha</option>
+              <option value="battery-desc">Batareya quvvati bo'yicha</option>
+              <option value="price-asc">Narxi (Arzondan qimmatga)</option>
+              <option value="price-desc">Narxi (Qimmatdan arzonga)</option>
+            </select>
+          </div>
+
+          <div class="filter-group special-toggles">
+            <label class="toggle-checkbox" title="Faqat IP68 suvdan himoyasi borlar">
+              <input type="checkbox" id="filterIp68">
+              <span class="custom-chk"></span>
+              <span class="chk-label"><i class="fa-solid fa-water"></i> Faqat IP68</span>
+            </label>
+            <label class="toggle-checkbox" title="Faqat OIS kamerasi borlar">
+              <input type="checkbox" id="filterOis">
+              <span class="custom-chk"></span>
+              <span class="chk-label"><i class="fa-solid fa-camera"></i> Faqat OIS kamera</span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Phone Cards Grid -->
+      <div class="phones-grid" id="phonesGrid">
+        <!-- Rendered dynamically via JS -->
+      </div>
+
+      <!-- Empty State -->
+      <div class="empty-state-card" id="emptyState" style="display: none;">
+        <i class="fa-solid fa-mobile-screen-button empty-icon"></i>
+        <h3>Hech qanday telefon topilmadi</h3>
+        <p>Qidiruv so'zini o'zgartirib ko'ring yoki filtrlarni tozalang.</p>
+        <button class="btn btn-secondary" id="resetFiltersBtn">
+          <i class="fa-solid fa-rotate-left"></i> Filtrlarni tozalash
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Buyer's Guide: Nimaga E'tibor Berish Kerak? -->
+  <section class="section buyers-guide-section" id="buyersGuide">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="section-tag"><i class="fa-solid fa-compass"></i> Xarid Bo'yicha Maslahatlar</span>
+        <h2 class="section-title">Telefon Olayotganda <span class="gradient-text">Nimaga E'tibor Berish Kerak?</span></h2>
+        <p class="section-desc">Ekspertlar tavsiyasi: 7 ta oltin qoida va aldanib qolmaslik choralari.</p>
+      </div>
+
+      <div class="guide-cards-grid" id="guideCardsGrid">
+        <!-- Populated via guide-data.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Hardware Deep Dive: Kameralar & Batareya & Ekran -->
+  <section class="section deep-dive-section" id="deepDive">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <span class="section-tag"><i class="fa-solid fa-microchip"></i> Apparat Tahlili</span>
+          <h2 class="section-title">Kamera, Batareya va Ekran <span class="gradient-text">Ichki Tuzilishi</span></h2>
+          <p class="section-desc">Jismoniy komponentlar qanday ishlaydi va ular kundalik hayotda nima beradi?</p>
+        </div>
+      </div>
+
+      <!-- Tech Tabs -->
+      <div class="tech-tabs-header">
+        <button class="tech-tab-btn active" data-tab="tab-camera" id="tabCameraBtn">
+          <i class="fa-solid fa-camera"></i> Kameralar Apparati
+        </button>
+        <button class="tech-tab-btn" data-tab="tab-battery" id="tabBatteryBtn">
+          <i class="fa-solid fa-bolt"></i> Batareya & Zaryad
+        </button>
+        <button class="tech-tab-btn" data-tab="tab-display" id="tabDisplayBtn">
+          <i class="fa-solid fa-desktop"></i> Ekran & Nits
+        </button>
+        <button class="tech-tab-btn" data-tab="tab-recs" id="tabRecsBtn">
+          <i class="fa-solid fa-star"></i> Ehtiyoj Bo'yicha Tanlov
+        </button>
+      </div>
+
+      <!-- Tab Contents -->
+      <div class="tech-tab-pane active" id="tab-camera">
+        <div class="tech-grid-2col">
+          <div class="tech-text-box">
+            <h3><i class="fa-solid fa-camera-retro text-accent"></i> Kameralar qanday tanlanadi?</h3>
+            <p>Smartfon kamerasida eng asosiy qism — <strong>Sensor (Matritsa) o'lchami</strong> va <strong>OIS (Optik barqarorlashtirish)</strong> mexanizmidir.</p>
+            <div class="info-callout">
+              <strong><i class="fa-solid fa-lightbulb"></i> Muhim qoida:</strong> 1 dyuymli 50 MP sensor har doim 1/1.52 dyuymli 108 MP yoki 200 MP sensordan yaxshiroq surat oladi, chunki har bir pikselning o'lchami yirik bo'ladi va ko'proq yorug'lik yutadi.
+            </div>
+            <div class="sensor-comparison-chart">
+              <div class="sensor-box sensor-1inch">
+                <span>1.0" Dyuym (Eng Yirik)</span>
+                <small>Xiaomi 14 Ultra, Vivo X100 Pro</small>
+              </div>
+              <div class="sensor-box sensor-113">
+                <span>1/1.3" Sensor</span>
+                <small>S24 Ultra, iPhone 16 Pro Max</small>
+              </div>
+              <div class="sensor-box sensor-115">
+                <span>1/1.56" Sensor</span>
+                <small>OnePlus 12, Galaxy A55</small>
+              </div>
+            </div>
+          </div>
+          <div class="tech-feature-cards">
+            <div class="feature-card">
+              <div class="f-icon"><i class="fa-solid fa-wave-square"></i></div>
+              <div class="f-content">
+                <h4>OIS (Optik Stabilizatsiya)</h4>
+                <p>Linza atrofidagi miniatyura magnitlar qo'l qaltirashini yutadi. Tunda xira bo'lmagan, harakatda silliq video olish uchun shart.</p>
+              </div>
+            </div>
+            <div class="feature-card">
+              <div class="f-icon"><i class="fa-solid fa-binoculars"></i></div>
+              <div class="f-content">
+                <h4>Periskop Zum (Optik 5x)</h4>
+                <p>Yorug'likni prizma orqali gorizontal linzalarga yo'naltiradi. Uzoqdagi obyektlarni 100% tiniq optik sifatda yaqinlashtiradi.</p>
+              </div>
+            </div>
+            <div class="feature-card">
+              <div class="f-icon"><i class="fa-solid fa-circle-dot"></i></div>
+              <div class="f-content">
+                <h4>Diafragma (f/1.6 vs f/2.4)</h4>
+                <p>f raqami qancha kichik bo'lsa, linza shuncha keng ochiladi va qorong'i xonada ham kunduzgidek yorug' surat beradi.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tech-tab-pane" id="tab-battery">
+        <div class="tech-grid-2col">
+          <div class="tech-text-box">
+            <h3><i class="fa-solid fa-bolt-lightning text-accent"></i> Batareya & Tez Zaryadlash Apparati</h3>
+            <p>Zamonaviy akkumulyatorlarda sig'im (mAh) bilan birga zaryadlash tezligi (Watt) va xavfsizlik chiplari hal qiluvchi ahamiyatga ega.</p>
+            <div class="charging-speed-table">
+              <div class="table-row head">
+                <span>Quvvat (Watt)</span>
+                <span>0 dan 100% gacha vaqt</span>
+                <span>Qutida blok bormi?</span>
+              </div>
+              <div class="table-row">
+                <span><strong>25W</strong> (Samsung)</span>
+                <span>~75-80 daqiqa</span>
+                <span class="cross">Yo'q (alohida)</span>
+              </div>
+              <div class="table-row">
+                <span><strong>30W-35W</strong> (Apple)</span>
+                <span>~90 daqiqa</span>
+                <span class="cross">Yo'q (alohida)</span>
+              </div>
+              <div class="table-row">
+                <span><strong>67W</strong> (Xiaomi/Poco)</span>
+                <span>~38-42 daqiqa</span>
+                <span class="check">Bor (qutida)</span>
+              </div>
+              <div class="table-row highlight">
+                <span><strong>100W - 120W</strong></span>
+                <span><strong>19 - 26 daqiqa!</strong></span>
+                <span class="check">Bor (qutida)</span>
+              </div>
+            </div>
+          </div>
+          <div class="tech-feature-cards">
+            <div class="feature-card">
+              <div class="f-icon"><i class="fa-solid fa-shield-virus"></i></div>
+              <div class="f-content">
+                <h4>120W Batareyani buzmaydimi?</h4>
+                <p>Ichkarida 2 ta alohida batareya bloki o'rnatilgan (har biriga 60W taqsimlanadi). Maxsus termal chip haroratni nazorat qiladi va xizmat muddatini 1600 siklgacha saqlaydi.</p>
+              </div>
+            </div>
+            <div class="feature-card">
+              <div class="f-icon"><i class="fa-solid fa-battery-half"></i></div>
+              <div class="f-content">
+                <h4>80% Oltin Qoidasi</h4>
+                <p>Batareyani doim 20% dan 80% gacha bo'lgan oraliqda zaryadlash uning degradatsiyasini (qarishini) 2 barobar sekinlashtiradi.</p>
+              </div>
+            </div>
+            <div class="feature-card">
+              <div class="f-icon"><i class="fa-solid fa-tower-broadcast"></i></div>
+              <div class="f-content">
+                <h4>Simsiz va Teskari Zaryad</h4>
+                <p>Qi2 va MagSafe simsiz zaryadlash kabel tiqishdan xalos qiladi. Teskari simsiz quvvat orqali telefon orqasiga naushnik yoki aqlli soat qo'yib quvvatlash mumkin.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tech-tab-pane" id="tab-display">
+        <div class="tech-grid-2col">
+          <div class="tech-text-box">
+            <h3><i class="fa-solid fa-tv text-accent"></i> Displey: AMOLED, Nits va PWM</h3>
+            <p>Har kuni o'rtacha 5-7 soat telefon ekraniga qaraymiz. Shu sababli displeyning apparat sifati ko'z salomatligi uchun bevosita javobgardir.</p>
+            <div class="info-callout">
+              <strong><i class="fa-solid fa-eye"></i> PWM (Chaqnosh) nima?</strong> OLED displeylar yorqinlikni kamaytirganda miltillaydi. Agar chastota past bo'lsa, ko'z tez charchaydi. 1920Hz-3840Hz yuqori chastotali PWM filtri bor ekranlarni tanlang.
+            </div>
+          </div>
+          <div class="tech-feature-cards">
+            <div class="feature-card">
+              <div class="f-icon"><i class="fa-solid fa-sun"></i></div>
+              <div class="f-content">
+                <h4>Nits (Yorqinlik Darajasi)</h4>
+                <p>1000 nits bino ichida yetarli, lekin O'zbekistonning jazirama quyoshi ostida matnlarni ko'rish uchun 2000-4500 nits cho'qqi yorqinlikka ega LTPO displeylar darkor.</p>
+              </div>
+            </div>
+            <div class="feature-card">
+              <div class="f-icon"><i class="fa-solid fa-gauge-high"></i></div>
+              <div class="f-content">
+                <h4>LTPO 1Hz - 120Hz Adaptiv Tezlik</h4>
+                <p>Ekranda harakat bo'lmaganda 1Hz ga tushadi, barmog'ingiz tekkanda darhol 120Hz ga chiqadi. Bu batareyani 25% tejaydi.</p>
+              </div>
+            </div>
+            <div class="feature-card">
+              <div class="f-icon"><i class="fa-solid fa-shield"></i></div>
+              <div class="f-content">
+                <h4>Corning Gorilla Armor & Victus 2</h4>
+                <p>Gorilla Armor ekranning akslanishini 75% ga kamaytiradi (S24 Ultra da). Victus 2 esa 1 metr balandlikdan qattiq beton yuzaga tushishga bardosh beradi.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tech-tab-pane" id="tab-recs">
+        <div class="recs-grid" id="recsGridContainer">
+          <!-- Populated from guide-data.js -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Side-by-Side Comparison Drawer / Modal -->
+  <div class="compare-drawer-backdrop" id="compareDrawerBackdrop"></div>
+  <aside class="compare-drawer" id="compareDrawer">
+    <div class="drawer-header">
+      <div class="drawer-title">
+        <i class="fa-solid fa-code-compare"></i>
+        <span>Smartfonlarni Taqqoslash</span>
+        <span class="compare-badge" id="drawerBadge">0/3</span>
+      </div>
+      <button class="drawer-close-btn" id="drawerCloseBtn"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+
+    <div class="drawer-body">
+      <div class="compare-slots-row" id="compareSlotsContainer">
+        <!-- Rendered by JS: 3 comparison slots -->
+      </div>
+
+      <div class="compare-table-wrapper" id="compareTableWrapper">
+        <!-- Comparison table injected via JS -->
+      </div>
+    </div>
+
+    <div class="drawer-footer">
+      <button class="btn btn-secondary" id="clearCompareBtn">
+        <i class="fa-solid fa-trash-can"></i> Ro'yxatni Tozalash
+      </button>
+      <button class="btn btn-primary" id="openFullCompareModalBtn">
+        <i class="fa-solid fa-up-right-and-down-left-from-center"></i> To'liq Ekranda Solishtirish
+      </button>
+    </div>
+  </aside>
+
+  <!-- Phone Detailed Hardware Specs Modal -->
+  <div class="modal-backdrop" id="phoneModalBackdrop"></div>
+  <div class="phone-modal" id="phoneDetailModal">
+    <div class="modal-header">
+      <div class="modal-title-wrap">
+        <span class="brand-sub" id="modalBrand">Brand</span>
+        <h3 id="modalName">Phone Name</h3>
+      </div>
+      <button class="modal-close-btn" id="modalCloseBtn"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div class="modal-body" id="modalBody">
+      <!-- Injected dynamically via JS -->
+    </div>
+  </div>
+
+  <!-- Full Screen Comparison Modal -->
+  <div class="modal-backdrop" id="fullCompareBackdrop"></div>
+  <div class="full-compare-modal" id="fullCompareModal">
+    <div class="modal-header">
+      <div class="modal-title-wrap">
+        <h3><i class="fa-solid fa-scale-balanced"></i> Telefonlar Apparatini To'liq Taqqoslash</h3>
+      </div>
+      <button class="modal-close-btn" id="fullCompareCloseBtn"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div class="modal-body full-compare-body" id="fullCompareBody">
+      <!-- Detailed table injected by JS -->
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-container">
+      <div class="footer-col brand-col">
+        <div class="brand-logo footer-logo">
+          <div class="logo-icon"><i class="fa-solid fa-mobile-screen-button"></i></div>
+          <span class="logo-title">PHONE<span class="accent-text">RADAR</span></span>
+        </div>
+        <p class="footer-desc">
+          Butun dunyodagi eng ilg'or telefonlarning xolis apparat (hardware) tahlili, kamera, batareya, displey va korpus tekshiruvi portali.
+        </p>
+        <div class="hardware-pledge">
+          <i class="fa-solid fa-check-double text-green"></i> Hech qanday dasturiy kodlarsiz — faqat jismoniy apparat imkoniyatlari!
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-heading">Tezkor Bo'limlar</h4>
+        <ul class="footer-links">
+          <li><a href="#catalog"><i class="fa-solid fa-angle-right"></i> Barcha Telefonlar Kataloqi</a></li>
+          <li><a href="#smartAdvisor"><i class="fa-solid fa-angle-right"></i> Qaysi Telefon Mos? (Test)</a></li>
+          <li><a href="#buyersGuide"><i class="fa-solid fa-angle-right"></i> Xarid Qo'llanmasi (7 Qoida)</a></li>
+          <li><a href="#deepDive"><i class="fa-solid fa-angle-right"></i> Kamera va Batareya Tahlili</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-heading">Mashhur Brendlar</h4>
+        <div class="footer-tag-cloud">
+          <span class="f-tag" onclick="filterByBrandName('Apple')">Apple iPhone</span>
+          <span class="f-tag" onclick="filterByBrandName('Samsung')">Samsung Galaxy</span>
+          <span class="f-tag" onclick="filterByBrandName('Xiaomi')">Xiaomi</span>
+          <span class="f-tag" onclick="filterByBrandName('Google')">Google Pixel</span>
+          <span class="f-tag" onclick="filterByBrandName('OnePlus')">OnePlus</span>
+          <span class="f-tag" onclick="filterByBrandName('Vivo')">Vivo</span>
+          <span class="f-tag" onclick="filterByBrandName('Asus')">Asus ROG</span>
+          <span class="f-tag" onclick="filterByBrandName('Sony')">Sony Xperia</span>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-heading">Xarid Eslatmasi</h4>
+        <p class="footer-small">
+          Smartfon xarid qilayotganda do'konda kafolat muddatini, displeyda piksellar o'lmaganligini va suvga chidamlilik rezinkalari butligini tekshirishni unutmang.
+        </p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container footer-bottom-inner">
+        <p>© 2024–2026 PHONERADAR. Barcha huquqlar himoyalangan. Hardware Guide Portal.</p>
+        <div class="footer-made-with">
+          <span>O'zbek tilidagi eng to'liq apparat ma'lumotlar bazasi</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/phones-data.js"></script>
+  <script src="js/guide-data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

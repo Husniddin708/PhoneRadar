@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="uz" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Xarid Qo'llanmasi | Telefon Olayotganda Nimaga E'tibor Berish Kerak? | PhoneRadar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-container">
+      <a href="index.html" class="brand-logo">
+        <div class="logo-icon"><i class="fa-solid fa-mobile-screen-button"></i></div>
+        <div class="logo-text">
+          <span class="logo-title">PHONE<span class="accent-text">RADAR</span></span>
+          <span class="logo-sub">HARDWARE PORTAL</span>
+        </div>
+      </a>
+
+      <nav class="nav-menu">
+        <a href="index.html" class="nav-link"><i class="fa-solid fa-house"></i> Bosh Sahifa</a>
+        <a href="catalog.html" class="nav-link"><i class="fa-solid fa-layer-group"></i> Telefonlar Kataloqi</a>
+        <a href="advisor.html" class="nav-link"><i class="fa-solid fa-wand-magic-sparkles"></i> Aqlli Maslahatchi</a>
+        <a href="guide.html" class="nav-link active"><i class="fa-solid fa-compass"></i> Xarid Qo'llanmasi</a>
+        <a href="hardware.html" class="nav-link"><i class="fa-solid fa-camera"></i> Kamera & Batareya</a>
+        <a href="compare.html" class="nav-link"><i class="fa-solid fa-code-compare"></i> Taqqoslash</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="compare-btn-header" id="compareDrawerBtn" title="Taqqoslovchi">
+          <i class="fa-solid fa-code-compare"></i>
+          <span>Taqqoslash</span>
+          <span class="compare-count-badge" id="compareBadgeCount">0</span>
+        </button>
+        <button class="theme-toggle-btn" id="themeToggleBtn"><i class="fa-solid fa-moon" id="themeIcon"></i></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Dedicated Buyer's Guide Page -->
+  <main class="section buyers-guide-section" style="padding-top: 4rem;">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="section-tag"><i class="fa-solid fa-compass"></i> Alohida Sahifa</span>
+        <h1 class="section-title">Telefon Olayotganda <span class="gradient-text">Nimaga E'tibor Berish Kerak?</span></h1>
+        <p class="section-desc">Ekspertlar tavsiyasi: 7 ta oltin qoida, marketing aldovlariga uchmaslik choralari va to'g'ri xarid bo'yicha professional qo'llanma.</p>
+      </div>
+
+      <!-- Quick Checklist Card -->
+      <div style="background: var(--bg-surface); border: 1px solid var(--border-hover); border-radius: var(--radius-xl); padding: 2rem; margin-bottom: 3rem; box-shadow: var(--shadow-md);">
+        <h3 style="font-size: 1.3rem; margin-bottom: 1rem; color: var(--accent-cyan); display: flex; align-items: center; gap: 0.6rem;">
+          <i class="fa-solid fa-list-check"></i> Do'konga Borganda 1 Daqiqalik Apparat Tekshiruvi:
+        </h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
+          <div style="background: var(--bg-surface-elevated); padding: 1rem; border-radius: var(--radius-md);">
+            <strong style="color: var(--accent-green);"><i class="fa-solid fa-check"></i> 1. Kamera OIS testi:</strong>
+            <p style="font-size: 0.82rem; color: var(--text-secondary); margin-top: 0.3rem;">Kamerani yoqib sekin qimirlatib ko'ring — tasvir silliq suzishi kerak, qotib sakramasligi lozim.</p>
+          </div>
+          <div style="background: var(--bg-surface-elevated); padding: 1rem; border-radius: var(--radius-md);">
+            <strong style="color: var(--accent-green);"><i class="fa-solid fa-check"></i> 2. Qizish testi:</strong>
+            <p style="font-size: 0.82rem; color: var(--text-secondary); margin-top: 0.3rem;">4K 60fps videoni 2 daqiqa yozib ko'ring. Orqa panel qattiq qizib ketmasligi kerak.</p>
+          </div>
+          <div style="background: var(--bg-surface-elevated); padding: 1rem; border-radius: var(--radius-md);">
+            <strong style="color: var(--accent-green);"><i class="fa-solid fa-check"></i> 3. Displey yorqinligi:</strong>
+            <p style="font-size: 0.82rem; color: var(--text-secondary); margin-top: 0.3rem;">Yorug'likni maksimalga qo'ying va oq fonda piksellar o'lmaganligini (nuqtalarni) tekshiring.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 7 Golden Rules Grid -->
+      <div class="guide-cards-grid" id="guideCardsGrid"></div>
+    </div>
+  </main>
+
+  <!-- Side-by-Side Comparison Drawer -->
+  <div class="compare-drawer-backdrop" id="compareDrawerBackdrop"></div>
+  <aside class="compare-drawer" id="compareDrawer">
+    <div class="drawer-header">
+      <div class="drawer-title">
+        <i class="fa-solid fa-code-compare"></i>
+        <span>Smartfonlarni Taqqoslash</span>
+        <span class="compare-badge" id="drawerBadge">0/3</span>
+      </div>
+      <button class="drawer-close-btn" id="drawerCloseBtn"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div class="drawer-body">
+      <div class="compare-slots-row" id="compareSlotsContainer"></div>
+      <div class="compare-table-wrapper" id="compareTableWrapper"></div>
+    </div>
+    <div class="drawer-footer">
+      <a href="compare.html" class="btn btn-primary" style="width: 100%;"><i class="fa-solid fa-up-right-and-down-left-from-center"></i> Solishtirish Sahifasiga O'tish</a>
+    </div>
+  </aside>
+
+  <footer class="site-footer">
+    <div class="container footer-container">
+      <div class="footer-col brand-col">
+        <div class="brand-logo footer-logo">
+          <div class="logo-icon"><i class="fa-solid fa-mobile-screen-button"></i></div>
+          <span class="logo-title">PHONE<span class="accent-text">RADAR</span></span>
+        </div>
+        <p class="footer-desc">Dunyodagi smartfonlarning xolis apparat tahlili portali.</p>
+      </div>
+      <div class="footer-col">
+        <h4 class="footer-heading">Sahifalar</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Bosh Sahifa</a></li>
+          <li><a href="catalog.html">Telefonlar Kataloqi</a></li>
+          <li><a href="advisor.html">Aqlli Maslahatchi</a></li>
+          <li><a href="guide.html">Xarid Qo'llanmasi</a></li>
+          <li><a href="hardware.html">Kamera & Batareya</a></li>
+          <li><a href="compare.html">Taqqoslash</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container footer-bottom-inner">
+        <p>© 2024–2026 PHONERADAR. Barcha huquqlar himoyalangan.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/phones-data.js"></script>
+  <script src="js/guide-data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="uz" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Telefonlar Kataloqi | PhoneRadar Dunyo Smartfonlari Apparat Bazasi</title>
+  <meta name="description" content="Butun dunyodagi smartfonlar katalogi: kamera datchiklari, batareya, ekran va protsessor bo'yicha qidiruv va filtrlar.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Top Announcement -->
+  <div class="top-announcement">
+    <div class="container announcement-inner">
+      <span><i class="fa-solid fa-microchip"></i> <strong>100% Apparat (Hardware) Tahlili:</strong> Ichki dasturiy kodlarsiz — faqat jismoniy kamera, batareya, ekran va korpus!</span>
+      <span class="badge-pill">2024–2025 Baza</span>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-container">
+      <a href="index.html" class="brand-logo">
+        <div class="logo-icon"><i class="fa-solid fa-mobile-screen-button"></i></div>
+        <div class="logo-text">
+          <span class="logo-title">PHONE<span class="accent-text">RADAR</span></span>
+          <span class="logo-sub">HARDWARE PORTAL</span>
+        </div>
+      </a>
+
+      <nav class="nav-menu">
+        <a href="index.html" class="nav-link"><i class="fa-solid fa-house"></i> Bosh Sahifa</a>
+        <a href="catalog.html" class="nav-link active"><i class="fa-solid fa-layer-group"></i> Telefonlar Kataloqi</a>
+        <a href="advisor.html" class="nav-link"><i class="fa-solid fa-wand-magic-sparkles"></i> Aqlli Maslahatchi</a>
+        <a href="guide.html" class="nav-link"><i class="fa-solid fa-compass"></i> Xarid Qo'llanmasi</a>
+        <a href="hardware.html" class="nav-link"><i class="fa-solid fa-camera"></i> Kamera & Batareya</a>
+        <a href="compare.html" class="nav-link"><i class="fa-solid fa-code-compare"></i> Taqqoslash</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="compare-btn-header" id="compareDrawerBtn" title="Taqqoslovchi">
+          <i class="fa-solid fa-code-compare"></i>
+          <span>Taqqoslash</span>
+          <span class="compare-count-badge" id="compareBadgeCount">0</span>
+        </button>
+
+        <button class="theme-toggle-btn" id="themeToggleBtn" title="Mavzu">
+          <i class="fa-solid fa-moon" id="themeIcon"></i>
+        </button>
+
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menyu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Dedicated Catalog Page -->
+  <main class="section catalog-section" style="padding-top: 3.5rem;">
+    <div class="container">
+      <div class="section-header">
+        <div class="header-left">
+          <span class="section-tag"><i class="fa-solid fa-mobile-screen"></i> Alohida Sahifa</span>
+          <h1 class="section-title">Dunyo Smartfonlari <span class="gradient-text">To'liq Kataloqi</span></h1>
+          <p class="section-desc">Har bir smartfonning kamera sensorlari, batareya quvvati, ekran nits yorqinligi va korpus himoyasi.</p>
+        </div>
+        <div class="catalog-live-count">
+          Jami: <span id="catalogCount" class="highlight-count">0</span> ta telefon
+        </div>
+      </div>
+
+      <!-- Search & Filters Toolbar -->
+      <div class="catalog-toolbar">
+        <!-- Live Search with Instant Dropdown -->
+        <div class="search-box-wrap">
+          <i class="fa-solid fa-magnifying-glass search-icon"></i>
+          <input type="text" id="phoneSearchInput" class="search-input" placeholder="Model, brend, kamera (200MP, 1 dyuym), protsessor (Snapdragon) yoki batareyani qidiring..." autocomplete="off">
+          <button class="clear-search-btn" id="clearSearchBtn" title="Tozalash"><i class="fa-solid fa-xmark"></i></button>
+          <div class="search-suggestions-dropdown" id="searchSuggestionsDropdown"></div>
+        </div>
+
+        <!-- Brand Chips -->
+        <div class="brand-chips-wrap" id="brandChipsContainer"></div>
+
+        <!-- Filters Row -->
+        <div class="filters-secondary-row">
+          <div class="filter-group">
+            <label for="categorySelect"><i class="fa-solid fa-filter"></i> Toifa:</label>
+            <select id="categorySelect" class="filter-select">
+              <option value="all">Barcha toifalar</option>
+              <option value="premium">Premium Flagman ($1000+)</option>
+              <option value="flagship">Flagman ($700 - $1000)</option>
+              <option value="flagship_killer">Flagman Qotillari ($450 - $700)</option>
+              <option value="midrange">O'rta toifa ($250 - $450)</option>
+              <option value="gaming">O'yinbop (Gaming)</option>
+            </select>
+          </div>
+
+          <div class="filter-group">
+            <label for="sortBySelect"><i class="fa-solid fa-arrow-down-short-wide"></i> Saralash:</label>
+            <select id="sortBySelect" class="filter-select">
+              <option value="rating-desc">Ekspert bali (Yuqoridan)</option>
+              <option value="camera-desc">Kamera bali bo'yicha</option>
+              <option value="battery-desc">Batareya quvvati bo'yicha</option>
+              <option value="price-asc">Narxi (Arzondan qimmatga)</option>
+              <option value="price-desc">Narxi (Qimmatdan arzonga)</option>
+            </select>
+          </div>
+
+          <div class="filter-group special-toggles">
+            <label class="toggle-checkbox" title="Faqat IP68 suvdan himoyasi borlar">
+              <input type="checkbox" id="filterIp68">
+              <span class="custom-chk"></span>
+              <span class="chk-label"><i class="fa-solid fa-water"></i> Faqat IP68</span>
+            </label>
+            <label class="toggle-checkbox" title="Faqat OIS kamerasi borlar">
+              <input type="checkbox" id="filterOis">
+              <span class="custom-chk"></span>
+              <span class="chk-label"><i class="fa-solid fa-camera"></i> Faqat OIS kamera</span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Phone Cards Grid -->
+      <div class="phones-grid" id="phonesGrid"></div>
+
+      <!-- Empty State -->
+      <div class="empty-state-card" id="emptyState" style="display: none;">
+        <i class="fa-solid fa-mobile-screen-button empty-icon"></i>
+        <h3>Hech qanday telefon topilmadi</h3>
+        <p>Qidiruv so'zini o'zgartirib ko'ring yoki filtrlarni tozalang.</p>
+        <button class="btn btn-secondary" id="resetFiltersBtn">
+          <i class="fa-solid fa-rotate-left"></i> Filtrlarni tozalash
+        </button>
+      </div>
+    </div>
+  </main>
+
+  <!-- Side-by-Side Comparison Drawer -->
+  <div class="compare-drawer-backdrop" id="compareDrawerBackdrop"></div>
+  <aside class="compare-drawer" id="compareDrawer">
+    <div class="drawer-header">
+      <div class="drawer-title">
+        <i class="fa-solid fa-code-compare"></i>
+        <span>Smartfonlarni Taqqoslash</span>
+        <span class="compare-badge" id="drawerBadge">0/3</span>
+      </div>
+      <button class="drawer-close-btn" id="drawerCloseBtn"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div class="drawer-body">
+      <div class="compare-slots-row" id="compareSlotsContainer"></div>
+      <div class="compare-table-wrapper" id="compareTableWrapper"></div>
+    </div>
+    <div class="drawer-footer">
+      <button class="btn btn-secondary" id="clearCompareBtn"><i class="fa-solid fa-trash-can"></i> Tozalash</button>
+      <a href="compare.html" class="btn btn-primary"><i class="fa-solid fa-up-right-and-down-left-from-center"></i> To'liq Solishtirish Sahifasi</a>
+    </div>
+  </aside>
+
+  <!-- Phone Detailed Hardware Specs Modal -->
+  <div class="modal-backdrop" id="phoneModalBackdrop"></div>
+  <div class="phone-modal" id="phoneDetailModal">
+    <div class="modal-header">
+      <div class="modal-title-wrap">
+        <span class="brand-sub" id="modalBrand">Brand</span>
+        <h3 id="modalName">Phone Name</h3>
+      </div>
+      <button class="modal-close-btn" id="modalCloseBtn"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-container">
+      <div class="footer-col brand-col">
+        <div class="brand-logo footer-logo">
+          <div class="logo-icon"><i class="fa-solid fa-mobile-screen-button"></i></div>
+          <span class="logo-title">PHONE<span class="accent-text">RADAR</span></span>
+        </div>
+        <p class="footer-desc">Dunyodagi smartfonlarning xolis apparat (hardware) tahlili portali.</p>
+      </div>
+      <div class="footer-col">
+        <h4 class="footer-heading">Sahifalar</h4>
+        <ul class="footer-links">
+          <li><a href="index.html"><i class="fa-solid fa-angle-right"></i> Bosh Sahifa</a></li>
+          <li><a href="catalog.html"><i class="fa-solid fa-angle-right"></i> Telefonlar Kataloqi</a></li>
+          <li><a href="advisor.html"><i class="fa-solid fa-angle-right"></i> Aqlli Maslahatchi</a></li>
+          <li><a href="guide.html"><i class="fa-solid fa-angle-right"></i> Xarid Qo'llanmasi</a></li>
+          <li><a href="hardware.html"><i class="fa-solid fa-angle-right"></i> Kamera & Batareya</a></li>
+          <li><a href="compare.html"><i class="fa-solid fa-angle-right"></i> Taqqoslash</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container footer-bottom-inner">
+        <p>© 2024–2026 PHONERADAR. Barcha huquqlar himoyalangan.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/phones-data.js"></script>
+  <script src="js/guide-data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
