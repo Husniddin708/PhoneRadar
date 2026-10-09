@@ -1187,17 +1187,24 @@ document.addEventListener("DOMContentLoaded", () => {
   // Mobile menu toggle
   const mobileMenuBtn = document.getElementById("mobileMenuBtn");
   const navMenu = document.getElementById("navMenu");
-  if (mobileMenuBtn) {
-    mobileMenuBtn.addEventListener("click", () => {
-      navMenu.style.display = navMenu.style.display === "flex" ? "none" : "flex";
-      navMenu.style.flexDirection = "column";
-      navMenu.style.position = "absolute";
-      navMenu.style.top = "72px";
-      navMenu.style.left = "0";
-      navMenu.style.width = "100%";
-      navMenu.style.background = "var(--bg-surface)";
-      navMenu.style.padding = "1rem 2rem";
-      navMenu.style.borderBottom = "1px solid var(--border-color)";
+  if (mobileMenuBtn && navMenu) {
+    mobileMenuBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      navMenu.classList.toggle("mobile-open");
+    });
+
+    // Close mobile menu when clicking any nav link
+    navMenu.querySelectorAll(".nav-link").forEach(link => {
+      link.addEventListener("click", () => {
+        navMenu.classList.remove("mobile-open");
+      });
+    });
+
+    // Close when clicking anywhere outside
+    document.addEventListener("click", (e) => {
+      if (!navMenu.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+        navMenu.classList.remove("mobile-open");
+      }
     });
   }
 
