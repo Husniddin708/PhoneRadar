@@ -315,7 +315,8 @@ document.addEventListener("DOMContentLoaded", () => {
   let searchDebounce;
   let suggestionsDebounce;
 
-  phoneSearchInput.addEventListener("input", (e) => {
+  if (phoneSearchInput) {
+    phoneSearchInput.addEventListener("input", (e) => {
     const val = e.target.value.trim();
     state.searchQuery = val;
     clearSearchBtn.style.display = val ? "block" : "none";
@@ -371,6 +372,7 @@ document.addEventListener("DOMContentLoaded", () => {
       fetchAndRenderPhones();
     }, 300);
   });
+  }
 
   function renderSearchSuggestions(items) {
     if (!items || items.length === 0) {
@@ -417,7 +419,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Close dropdown on outside click
   document.addEventListener("click", (e) => {
-    if (!phoneSearchInput.contains(e.target) && !searchSuggestionsDropdown.contains(e.target)) {
+    if (phoneSearchInput && searchSuggestionsDropdown && !phoneSearchInput.contains(e.target) && !searchSuggestionsDropdown.contains(e.target)) {
       hideSuggestions();
     }
   });
@@ -556,29 +558,33 @@ document.addEventListener("DOMContentLoaded", () => {
     compareTableWrapper.innerHTML = html;
   }
 
-  compareDrawerBtn.addEventListener("click", () => {
-    compareDrawer.classList.add("active");
-    compareDrawerBackdrop.classList.add("active");
-  });
+  if (compareDrawerBtn && compareDrawer && compareDrawerBackdrop) {
+    compareDrawerBtn.addEventListener("click", () => {
+      compareDrawer.classList.add("active");
+      compareDrawerBackdrop.classList.add("active");
+    });
 
-  drawerCloseBtn.addEventListener("click", () => {
-    compareDrawer.classList.remove("active");
-    compareDrawerBackdrop.classList.remove("active");
-  });
+    if (drawerCloseBtn) {
+      drawerCloseBtn.addEventListener("click", () => {
+        compareDrawer.classList.remove("active");
+        compareDrawerBackdrop.classList.remove("active");
+      });
+    }
 
-  compareDrawerBackdrop.addEventListener("click", () => {
-    compareDrawer.classList.remove("active");
-    compareDrawerBackdrop.classList.remove("active");
-  });
+    compareDrawerBackdrop.addEventListener("click", () => {
+      compareDrawer.classList.remove("active");
+      compareDrawerBackdrop.classList.remove("active");
+    });
+  }
 
-  clearCompareBtn.addEventListener("click", () => {
+  if (clearCompareBtn) clearCompareBtn.addEventListener("click", () => {
     state.comparedPhoneIds = [];
     updateCompareUI();
     renderPhonesCatalog(state.phonesData);
   });
 
   // Full Screen Compare Modal
-  openFullCompareModalBtn.addEventListener("click", async () => {
+  if (openFullCompareModalBtn) openFullCompareModalBtn.addEventListener("click", async () => {
     if (state.comparedPhoneIds.length < 2) {
       alert("Iltimos, to'liq solishtirish uchun kamida 2 ta telefon tanlang!");
       return;
@@ -644,12 +650,12 @@ document.addEventListener("DOMContentLoaded", () => {
     fullCompareBackdrop.classList.add("active");
   });
 
-  fullCompareCloseBtn.addEventListener("click", () => {
+  if (fullCompareCloseBtn && fullCompareModal && fullCompareBackdrop) fullCompareCloseBtn.addEventListener("click", () => {
     fullCompareModal.classList.remove("active");
     fullCompareBackdrop.classList.remove("active");
   });
 
-  fullCompareBackdrop.addEventListener("click", () => {
+  if (fullCompareBackdrop && fullCompareModal) fullCompareBackdrop.addEventListener("click", () => {
     fullCompareModal.classList.remove("active");
     fullCompareBackdrop.classList.remove("active");
   });
@@ -945,12 +951,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   window.openPhoneDetailModal = openPhoneDetailModal;
 
-  modalCloseBtn.addEventListener("click", () => {
+  if (modalCloseBtn && phoneDetailModal && phoneModalBackdrop) modalCloseBtn.addEventListener("click", () => {
     phoneDetailModal.classList.remove("active");
     phoneModalBackdrop.classList.remove("active");
   });
 
-  phoneModalBackdrop.addEventListener("click", () => {
+  if (phoneModalBackdrop && phoneDetailModal) phoneModalBackdrop.addEventListener("click", () => {
     phoneDetailModal.classList.remove("active");
     phoneModalBackdrop.classList.remove("active");
   });
@@ -1140,7 +1146,7 @@ document.addEventListener("DOMContentLoaded", () => {
     quizResult.style.display = "block";
   }
 
-  restartQuizBtn.addEventListener("click", () => {
+  if (restartQuizBtn) restartQuizBtn.addEventListener("click", () => {
     quizResult.style.display = "none";
     quizStep1.classList.add("active");
     quizStep2.classList.remove("active");
@@ -1149,27 +1155,27 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // Filter events
-  categorySelect.addEventListener("change", (e) => {
+  if (categorySelect) categorySelect.addEventListener("change", (e) => {
     state.selectedCategory = e.target.value;
     fetchAndRenderPhones();
   });
 
-  sortBySelect.addEventListener("change", (e) => {
+  if (sortBySelect) sortBySelect.addEventListener("change", (e) => {
     state.sortBy = e.target.value;
     fetchAndRenderPhones();
   });
 
-  filterIp68Chk.addEventListener("change", (e) => {
+  if (filterIp68Chk) filterIp68Chk.addEventListener("change", (e) => {
     state.filterIp68 = e.target.checked;
     fetchAndRenderPhones();
   });
 
-  filterOisChk.addEventListener("change", (e) => {
+  if (filterOisChk) filterOisChk.addEventListener("change", (e) => {
     state.filterOis = e.target.checked;
     fetchAndRenderPhones();
   });
 
-  resetFiltersBtn.addEventListener("click", () => {
+  if (resetFiltersBtn) resetFiltersBtn.addEventListener("click", () => {
     state.selectedBrand = "all";
     state.selectedCategory = "all";
     state.searchQuery = "";
@@ -1184,29 +1190,7 @@ document.addEventListener("DOMContentLoaded", () => {
     fetchAndRenderPhones();
   });
 
-  // Mobile menu toggle
-  const mobileMenuBtn = document.getElementById("mobileMenuBtn");
-  const navMenu = document.getElementById("navMenu");
-  if (mobileMenuBtn && navMenu) {
-    mobileMenuBtn.addEventListener("click", (e) => {
-      e.stopPropagation();
-      navMenu.classList.toggle("mobile-open");
-    });
 
-    // Close mobile menu when clicking any nav link
-    navMenu.querySelectorAll(".nav-link").forEach(link => {
-      link.addEventListener("click", () => {
-        navMenu.classList.remove("mobile-open");
-      });
-    });
-
-    // Close when clicking anywhere outside
-    document.addEventListener("click", (e) => {
-      if (!navMenu.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
-        navMenu.classList.remove("mobile-open");
-      }
-    });
-  }
 
   // ==========================================
   // 11. INITIAL RUN

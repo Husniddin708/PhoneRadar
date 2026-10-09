@@ -118,6 +118,7 @@
 
   <script src="js/phones-data.js"></script>
   <script src="js/guide-data.js"></script>
+  <script src="js/app.js"></script>
   <script>
     document.addEventListener("DOMContentLoaded", async () => {
       let allPhones = [];
@@ -181,7 +182,10 @@
         }
 
         matrixEl.innerHTML = `
-          <div style="overflow-x: auto;">
+          <div class="mobile-scroll-hint">
+            <i class="fa-solid fa-arrows-left-right"></i> Telefon yoki planshetda jadvalni yon tomonga suring
+          </div>
+          <div class="compare-matrix-scroll">
             <table class="compare-matrix-table">
               <thead>
                 <tr>
