@@ -2796,3 +2796,146 @@ button, input, select {
   border-radius: var(--radius-lg);
   border: 1px solid var(--border-color);
 }
+
+/* ========================================================
+   BACK BUTTONS, SMARTFON EDIT & MODAL STYLES (SMARTFON.ol)
+   ======================================================== */
+.btn-back-nav {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.45rem 1rem;
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-full);
+  color: var(--text-primary);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--trans-quick);
+  text-decoration: none;
+  box-shadow: var(--shadow-sm);
+  white-space: nowrap;
+}
+.btn-back-nav:hover {
+  background: var(--grad-primary);
+  color: #ffffff;
+  border-color: transparent;
+  transform: translateX(-3px);
+  box-shadow: 0 4px 14px var(--accent-purple-glow);
+}
+
+.btn-back-hero {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.55rem 1.2rem;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-full);
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--trans-quick);
+  text-decoration: none;
+  margin-bottom: 1.2rem;
+}
+.btn-back-hero:hover {
+  color: var(--accent-cyan);
+  border-color: var(--accent-cyan);
+  background: var(--bg-surface-elevated);
+  transform: translateX(-4px);
+  box-shadow: 0 4px 14px rgba(6, 182, 212, 0.2);
+}
+
+.btn-card-edit {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  background: var(--bg-surface-elevated);
+  color: var(--accent-cyan);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--trans-quick);
+  font-size: 0.95rem;
+  flex-shrink: 0;
+}
+.btn-card-edit:hover {
+  background: var(--accent-cyan);
+  color: #ffffff;
+  border-color: var(--accent-cyan);
+  transform: scale(1.08);
+  box-shadow: 0 4px 12px rgba(6, 182, 212, 0.35);
+}
+
+.modal-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.modal-action-btn-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.45rem 0.95rem;
+  border-radius: var(--radius-full);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--trans-quick);
+  border: 1px solid var(--border-glass);
+}
+
+.modal-back-btn {
+  background: var(--bg-surface-elevated);
+  color: var(--text-primary);
+}
+.modal-back-btn:hover {
+  background: var(--border-color);
+  transform: translateX(-2px);
+}
+
+.modal-edit-action-btn {
+  background: rgba(6, 182, 212, 0.15);
+  color: var(--accent-cyan);
+  border-color: rgba(6, 182, 212, 0.3);
+}
+.modal-edit-action-btn:hover {
+  background: var(--accent-cyan);
+  color: #ffffff;
+}
+
+.smartfon-toast {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background: #10b981;
+  color: #ffffff;
+  padding: 0.9rem 1.6rem;
+  border-radius: var(--radius-lg);
+  font-weight: 600;
+  font-size: 0.92rem;
+  box-shadow: 0 10px 25px rgba(16, 185, 129, 0.35);
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  animation: slideToast 0.3s ease-out;
+}
+@keyframes slideToast {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+

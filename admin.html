@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PhoneRadar Admin Panel | Smartfonlar Apparat Bazasini Boshqarish</title>
+  <title>SMARTFON.ol Admin Panel | Smartfonlar Apparat Bazasini Boshqarish</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
@@ -170,7 +170,7 @@
       <a href="index.html" class="brand-logo">
         <div class="logo-icon"><i class="fa-solid fa-mobile-screen-button"></i></div>
         <div class="logo-text">
-          <span class="logo-title">PHONE<span class="accent-text">RADAR</span></span>
+          <span class="logo-title">SMARTFON<span class="accent-text">.ol</span></span>
           <span class="logo-sub">ADMIN DASHBOARD</span>
         </div>
       </a>
@@ -185,6 +185,9 @@
       </nav>
 
       <div class="header-actions">
+        <a href="index.html" class="btn-back-nav" onclick="if(window.history.length > 1){ history.back(); return false;}" title="Orqaga qaytish">
+          <i class="fa-solid fa-arrow-left"></i> <span>Orqaga</span>
+        </a>
         <button class="btn btn-primary" id="openAddPhoneModalBtn">
           <i class="fa-solid fa-plus"></i> Yangi Telefon Qo'shish
         </button>
@@ -193,6 +196,11 @@
   </header>
 
   <main class="admin-container">
+    <div style="margin-bottom: 0.8rem;">
+      <a href="index.html" class="btn-back-hero" onclick="if(window.history.length > 1){ history.back(); return false;}">
+        <i class="fa-solid fa-arrow-left"></i> <span>Orqaga qaytish</span>
+      </a>
+    </div>
     <div class="admin-header">
       <div>
         <span class="section-tag"><i class="fa-solid fa-server"></i> Backend Boshqaruvi</span>
@@ -400,18 +408,35 @@
     </div>
   </div>
 
+  <script src="js/phones-data.js"></script>
   <script>
     let adminPhones = [];
+
+    function getLocalCustomEdits() {
+      try {
+        return JSON.parse(localStorage.getItem('smartfon_custom_edits') || '{}');
+      } catch(e) { return {}; }
+    }
 
     async function loadStats() {
       try {
         const res = await fetch('/api/stats');
-        const data = await res.json();
-        document.getElementById('statTotalPhones').textContent = data.totalPhones;
-        document.getElementById('statTotalBrands').textContent = data.totalBrands;
-        document.getElementById('statAvgRating').textContent = data.averageRating;
-      } catch (e) {
-        console.error(e);
+        if (res.ok) {
+          const data = await res.json();
+          document.getElementById('statTotalPhones').textContent = data.totalPhones;
+          document.getElementById('statTotalBrands').textContent = data.totalBrands;
+          document.getElementById('statAvgRating').textContent = data.averageRating;
+          return;
+        }
+      } catch (e) {}
+
+      // Fallback
+      if (typeof PHONES_DATABASE !== 'undefined') {
+        const brands = new Set(PHONES_DATABASE.map(p => p.brand));
+        const avg = (PHONES_DATABASE.reduce((acc, p) => acc + (p.rating || 9.0), 0) / PHONES_DATABASE.length).toFixed(1);
+        document.getElementById('statTotalPhones').textContent = PHONES_DATABASE.length;
+        document.getElementById('statTotalBrands').textContent = brands.size;
+        document.getElementById('statAvgRating').textContent = avg;
       }
     }
 
@@ -419,11 +444,24 @@
       try {
         const url = query ? `/api/phones?q=${encodeURIComponent(query)}` : '/api/phones';
         const res = await fetch(url);
-        const result = await res.json();
-        adminPhones = result.data;
+        if (res.ok) {
+          const result = await res.json();
+          adminPhones = result.data;
+          renderAdminTable(adminPhones);
+          return;
+        }
+      } catch (e) {}
+
+      // Fallback to local DB
+      if (typeof PHONES_DATABASE !== 'undefined') {
+        const edits = getLocalCustomEdits();
+        let list = PHONES_DATABASE.map(p => edits[p.id] ? Object.assign({}, p, edits[p.id]) : p);
+        if (query) {
+          const q = query.toLowerCase();
+          list = list.filter(p => p.name.toLowerCase().includes(q) || p.brand.toLowerCase().includes(q));
+        }
+        adminPhones = list;
         renderAdminTable(adminPhones);
-      } catch (e) {
-        console.error(e);
       }
     }
 

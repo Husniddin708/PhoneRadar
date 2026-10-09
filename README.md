@@ -1,4 +1,6 @@
-# PhoneRadar — SmartPhone Hardware & Buyer's Guide Portal
+# SMARTFON.ol — SmartPhone Hardware & Buyer's Guide Portal
+
+🌐 **Jonli Sayt Havolasi (GitHub Pages):** [https://husniddin708.github.io/PhoneRadar/](https://husniddin708.github.io/PhoneRadar/)
 
 Dunyo smartfonlari, kamera va batareya apparat tahlili hamda xarid bo'yicha professional maslahatlar platformasi (Fullstack Multi-Page Web Application).
 

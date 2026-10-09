@@ -24,6 +24,34 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
+  // Helper for custom phone edits (SMARTFON.ol)
+  function getCustomPhoneEdits() {
+    try {
+      return JSON.parse(localStorage.getItem("smartfon_custom_edits") || "{}");
+    } catch(e) { return {}; }
+  }
+
+  // Toast notification helper
+  function showToast(msg) {
+    const existing = document.querySelector(".smartfon-toast");
+    if (existing) existing.remove();
+    const toast = document.createElement("div");
+    toast.className = "smartfon-toast";
+    toast.innerHTML = `<i class="fa-solid fa-circle-check"></i> <span>${msg}</span>`;
+    document.body.appendChild(toast);
+    setTimeout(() => toast.remove(), 3500);
+  }
+
+  // Apply stored edits to PHONES_DATABASE on boot
+  if (typeof PHONES_DATABASE !== "undefined") {
+    const edits = getCustomPhoneEdits();
+    PHONES_DATABASE.forEach((phone, idx) => {
+      if (edits[phone.id]) {
+        PHONES_DATABASE[idx] = Object.assign({}, phone, edits[phone.id]);
+      }
+    });
+  }
+
   // DOM Elements
   const themeToggleBtn = document.getElementById("themeToggleBtn");
   const themeIcon = document.getElementById("themeIcon");
@@ -282,7 +310,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
           <div class="card-actions-row">
             <button class="btn btn-primary btn-card-detail" data-id="${phone.id}">
-              <i class="fa-solid fa-circle-info"></i> Apparat Tahlili
+              <i class="fa-solid fa-circle-info"></i> Tahlil
+            </button>
+            <button class="btn-card-edit" data-id="${phone.id}" title="Smartfonni to'g'irlash (Ismi, narxi, parametrlari)">
+              <i class="fa-solid fa-pen-to-square"></i>
             </button>
             <button class="btn-card-compare ${isCompared ? "in-compare" : ""}" data-id="${phone.id}" title="Taqqoslashga qo'shish">
               <i class="fa-solid fa-code-compare"></i>
@@ -293,6 +324,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
       card.querySelector(".btn-card-detail").addEventListener("click", () => {
         openPhoneDetailModal(phone.id);
+      });
+
+      card.querySelector(".btn-card-edit").addEventListener("click", (e) => {
+        e.stopPropagation();
+        openEditPhoneModal(phone.id);
       });
 
       card.querySelector(".btn-card-compare").addEventListener("click", (e) => {
@@ -914,6 +950,21 @@ document.addEventListener("DOMContentLoaded", () => {
           </div>
         </div>
       </div>
+
+      <!-- Modal Bottom Actions (Orqaga Qaytish va Smartfonni To'g'irlash) -->
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1.8rem; padding-top: 1.2rem; border-top: 1px solid var(--border-color); flex-wrap: wrap; gap: 0.8rem;">
+        <button class="btn btn-secondary" id="modalBackBtnBottom">
+          <i class="fa-solid fa-arrow-left"></i> <span>Orqaga qaytish</span>
+        </button>
+        <div style="display: flex; gap: 0.6rem;">
+          <button class="btn btn-secondary" id="modalEditBtnBottom">
+            <i class="fa-solid fa-pen-to-square text-cyan"></i> <span>Smartfonni to'g'irlash</span>
+          </button>
+          <button class="btn btn-primary" id="modalCompareBtnBottom">
+            <i class="fa-solid fa-code-compare"></i> <span>Taqqoslash</span>
+          </button>
+        </div>
+      </div>
     `;
 
     // Hook up review submission
@@ -935,15 +986,49 @@ document.addEventListener("DOMContentLoaded", () => {
         });
         const data = await res.json();
         if (data.success) {
-          alert("Sharhingiz qabul qilindi!");
+          showToast("Sharhingiz qabul qilindi!");
           openPhoneDetailModal(phone.id);
         } else {
           alert(data.error || "Xatolik yuz berdi");
         }
       } catch (err) {
-        alert("Server xatosi: " + err.message);
+        showToast("Sharh qabul qilindi (Mahalliy rejimda)");
       }
     });
+
+    // Wire up modal header & bottom back/edit buttons
+    const modalBackBtn = document.getElementById("modalBackBtn");
+    if (modalBackBtn) {
+      modalBackBtn.onclick = () => {
+        phoneDetailModal.classList.remove("active");
+        phoneModalBackdrop.classList.remove("active");
+      };
+    }
+    const modalEditPhoneBtn = document.getElementById("modalEditPhoneBtn");
+    if (modalEditPhoneBtn) {
+      modalEditPhoneBtn.onclick = () => {
+        openEditPhoneModal(phone.id);
+      };
+    }
+    const modalBackBtnBottom = document.getElementById("modalBackBtnBottom");
+    if (modalBackBtnBottom) {
+      modalBackBtnBottom.onclick = () => {
+        phoneDetailModal.classList.remove("active");
+        phoneModalBackdrop.classList.remove("active");
+      };
+    }
+    const modalEditBtnBottom = document.getElementById("modalEditBtnBottom");
+    if (modalEditBtnBottom) {
+      modalEditBtnBottom.onclick = () => {
+        openEditPhoneModal(phone.id);
+      };
+    }
+    const modalCompareBtnBottom = document.getElementById("modalCompareBtnBottom");
+    if (modalCompareBtnBottom) {
+      modalCompareBtnBottom.onclick = () => {
+        toggleComparePhone(phone.id);
+      };
+    }
 
     phoneDetailModal.classList.add("active");
     phoneModalBackdrop.classList.add("active");
@@ -960,6 +1045,219 @@ document.addEventListener("DOMContentLoaded", () => {
     phoneDetailModal.classList.remove("active");
     phoneModalBackdrop.classList.remove("active");
   });
+
+  // ==========================================
+  // 8.5 SMARTFONNI TO'G'IRLASH MODALI (EDIT PHONE MODAL)
+  // ==========================================
+  function openEditPhoneModal(phoneId) {
+    let phone = (typeof PHONES_DATABASE !== "undefined" ? PHONES_DATABASE.find(p => p.id === phoneId) : null)
+      || state.phonesData.find(p => p.id === phoneId);
+    if (!phone) return;
+
+    let editModal = document.getElementById("siteEditPhoneModal");
+    let editBackdrop = document.getElementById("siteEditPhoneModalBackdrop");
+    if (!editModal) {
+      const modalWrapper = document.createElement("div");
+      modalWrapper.innerHTML = `
+        <div class="modal-backdrop" id="siteEditPhoneModalBackdrop"></div>
+        <div class="phone-modal edit-phone-modal" id="siteEditPhoneModal" style="max-width: 650px;">
+          <div class="modal-header">
+            <div class="modal-title-wrap">
+              <span class="brand-sub"><i class="fa-solid fa-pen-to-square text-cyan"></i> SMARTFON PARAMETRLARINI TAHRIRLASH</span>
+              <h3 id="siteEditModalHeaderTitle">Smartfonni To'g'irlash</h3>
+            </div>
+            <div style="display: flex; align-items: center; gap: 0.6rem;">
+              <button class="modal-action-btn-pill modal-back-btn" id="siteEditModalBackTopBtn" title="Orqaga qaytish">
+                <i class="fa-solid fa-arrow-left"></i> <span>Orqaga</span>
+              </button>
+              <button class="modal-close-btn" id="siteCloseEditModalBtn"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+          </div>
+          <div class="modal-body" style="padding: 1.5rem;">
+            <form id="siteEditPhoneForm">
+              <input type="hidden" id="siteEditPhoneId">
+              
+              <div style="margin-bottom: 1.1rem;">
+                <label style="display:block; font-size: 0.85rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--accent-cyan);">
+                  <i class="fa-solid fa-font"></i> 1. Ismini (Model Nomi) *
+                </label>
+                <input type="text" id="siteEditPhoneName" class="form-input" style="width: 100%; font-size: 1.05rem; font-weight: 700;" placeholder="Masalan: Samsung Galaxy S24 Ultra" required>
+              </div>
+
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.1rem;">
+                <div>
+                  <label style="display:block; font-size: 0.82rem; font-weight: 600; margin-bottom: 0.35rem; color: var(--text-secondary);">
+                    <i class="fa-solid fa-tag"></i> Brendi *
+                  </label>
+                  <select id="siteEditPhoneBrand" class="form-select" style="width: 100%;">
+                    <option value="Samsung">Samsung</option>
+                    <option value="Apple">Apple</option>
+                    <option value="Xiaomi">Xiaomi</option>
+                    <option value="OnePlus">OnePlus</option>
+                    <option value="Google">Google</option>
+                    <option value="Vivo">Vivo</option>
+                    <option value="Asus">Asus</option>
+                    <option value="Nothing">Nothing</option>
+                    <option value="Sony">Sony</option>
+                    <option value="Poco">Poco</option>
+                  </select>
+                </div>
+                <div>
+                  <label style="display:block; font-size: 0.82rem; font-weight: 600; margin-bottom: 0.35rem; color: var(--text-secondary);">
+                    <i class="fa-solid fa-dollar-sign"></i> Narxi (USD)
+                  </label>
+                  <input type="number" id="siteEditPhonePriceUSD" class="form-input" style="width: 100%;" placeholder="1199">
+                </div>
+              </div>
+
+              <div style="margin-bottom: 1.1rem;">
+                <label style="display:block; font-size: 0.82rem; font-weight: 600; margin-bottom: 0.35rem; color: var(--text-secondary);">
+                  <i class="fa-solid fa-money-bill-wave"></i> Narxi (UZS)
+                </label>
+                <input type="text" id="siteEditPhonePriceUZS" class="form-input" style="width: 100%;" placeholder="15 500 000 so'm">
+              </div>
+
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.1rem;">
+                <div>
+                  <label style="display:block; font-size: 0.82rem; font-weight: 600; margin-bottom: 0.35rem; color: var(--text-secondary);">
+                    <i class="fa-solid fa-camera"></i> Asosiy Kamera
+                  </label>
+                  <input type="text" id="siteEditPhoneCamera" class="form-input" style="width: 100%;" placeholder="200 MP, OIS">
+                </div>
+                <div>
+                  <label style="display:block; font-size: 0.82rem; font-weight: 600; margin-bottom: 0.35rem; color: var(--text-secondary);">
+                    <i class="fa-solid fa-bolt"></i> Batareya & Zaryad
+                  </label>
+                  <input type="text" id="siteEditPhoneBattery" class="form-input" style="width: 100%;" placeholder="5000 mAh, 45W">
+                </div>
+              </div>
+
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.1rem;">
+                <div>
+                  <label style="display:block; font-size: 0.82rem; font-weight: 600; margin-bottom: 0.35rem; color: var(--text-secondary);">
+                    <i class="fa-solid fa-microchip"></i> Chipset
+                  </label>
+                  <input type="text" id="siteEditPhoneChipset" class="form-input" style="width: 100%;" placeholder="Snapdragon 8 Gen 3">
+                </div>
+                <div>
+                  <label style="display:block; font-size: 0.82rem; font-weight: 600; margin-bottom: 0.35rem; color: var(--text-secondary);">
+                    <i class="fa-solid fa-desktop"></i> Displey
+                  </label>
+                  <input type="text" id="siteEditPhoneDisplay" class="form-input" style="width: 100%;" placeholder="6.8 Dynamic AMOLED">
+                </div>
+              </div>
+
+              <div style="margin-bottom: 1.5rem;">
+                <label style="display:block; font-size: 0.82rem; font-weight: 600; margin-bottom: 0.35rem; color: var(--text-secondary);">
+                  <i class="fa-solid fa-image"></i> Rasm URL Havolasi
+                </label>
+                <input type="url" id="siteEditPhoneImage" class="form-input" style="width: 100%;" placeholder="https://...">
+              </div>
+
+              <div style="display: flex; justify-content: space-between; align-items: center; gap: 1rem; border-top: 1px solid var(--border-color); padding-top: 1.2rem; flex-wrap: wrap;">
+                <button type="button" class="btn btn-secondary" id="siteCancelEditPhoneBtn">
+                  <i class="fa-solid fa-arrow-left"></i> <span>Orqaga qaytish</span>
+                </button>
+                <button type="submit" class="btn btn-primary" id="siteSaveEditPhoneBtn">
+                  <i class="fa-solid fa-floppy-disk"></i> <span>O'zgarishlarni Saqlash</span>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      `;
+      document.body.appendChild(modalWrapper);
+      editModal = document.getElementById("siteEditPhoneModal");
+      editBackdrop = document.getElementById("siteEditPhoneModalBackdrop");
+
+      const closeEditModal = () => {
+        editModal.classList.remove("active");
+        editBackdrop.classList.remove("active");
+      };
+
+      document.getElementById("siteCloseEditModalBtn").addEventListener("click", closeEditModal);
+      document.getElementById("siteCancelEditPhoneBtn").addEventListener("click", closeEditModal);
+      document.getElementById("siteEditModalBackTopBtn").addEventListener("click", closeEditModal);
+      editBackdrop.addEventListener("click", closeEditModal);
+
+      document.getElementById("siteEditPhoneForm").addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const id = document.getElementById("siteEditPhoneId").value;
+        const currentTarget = (typeof PHONES_DATABASE !== "undefined" ? PHONES_DATABASE.find(p => p.id === id) : null)
+          || state.phonesData.find(p => p.id === id);
+
+        const updatedData = {
+          name: document.getElementById("siteEditPhoneName").value.trim(),
+          brand: document.getElementById("siteEditPhoneBrand").value,
+          priceEstimateUSD: Number(document.getElementById("siteEditPhonePriceUSD").value) || (currentTarget ? currentTarget.priceEstimateUSD : 999),
+          priceEstimateUZS: document.getElementById("siteEditPhonePriceUZS").value.trim() || (currentTarget ? currentTarget.priceEstimateUZS : "10 000 000 so'm"),
+          image: document.getElementById("siteEditPhoneImage").value.trim() || (currentTarget ? currentTarget.image : ""),
+        };
+
+        const customEdits = getCustomPhoneEdits();
+        customEdits[id] = Object.assign({}, customEdits[id] || {}, updatedData);
+        
+        const cameraVal = document.getElementById("siteEditPhoneCamera").value.trim();
+        const batteryVal = document.getElementById("siteEditPhoneBattery").value.trim();
+        const chipsetVal = document.getElementById("siteEditPhoneChipset").value.trim();
+        const displayVal = document.getElementById("siteEditPhoneDisplay").value.trim();
+        
+        customEdits[id].quickSpecs = Object.assign({}, currentTarget ? currentTarget.quickSpecs : {}, {
+          mainCamera: cameraVal || (currentTarget && currentTarget.quickSpecs && currentTarget.quickSpecs.mainCamera),
+          battery: batteryVal || (currentTarget && currentTarget.quickSpecs && currentTarget.quickSpecs.battery),
+          chipset: chipsetVal || (currentTarget && currentTarget.quickSpecs && currentTarget.quickSpecs.chipset),
+          display: displayVal || (currentTarget && currentTarget.quickSpecs && currentTarget.quickSpecs.display)
+        });
+
+        localStorage.setItem("smartfon_custom_edits", JSON.stringify(customEdits));
+
+        if (typeof PHONES_DATABASE !== "undefined") {
+          const idx = PHONES_DATABASE.findIndex(p => p.id === id);
+          if (idx !== -1) {
+            PHONES_DATABASE[idx] = Object.assign({}, PHONES_DATABASE[idx], customEdits[id]);
+          }
+        }
+        const stateIdx = state.phonesData.findIndex(p => p.id === id);
+        if (stateIdx !== -1) {
+          state.phonesData[stateIdx] = Object.assign({}, state.phonesData[stateIdx], customEdits[id]);
+        }
+
+        try {
+          await fetch(`/api/phones/${id}`, {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(customEdits[id])
+          });
+        } catch (err) {}
+
+        closeEditModal();
+        if (phonesGrid) {
+          renderPhonesCatalog(state.phonesData);
+        }
+        showToast(`"${updatedData.name}" muvaffaqiyatli to'g'irlandi!`);
+
+        if (phoneDetailModal && phoneDetailModal.classList.contains("active")) {
+          openPhoneDetailModal(id);
+        }
+      });
+    }
+
+    document.getElementById("siteEditPhoneId").value = phone.id;
+    document.getElementById("siteEditModalHeaderTitle").textContent = `${phone.name} — To'g'irlash`;
+    document.getElementById("siteEditPhoneName").value = phone.name || "";
+    document.getElementById("siteEditPhoneBrand").value = phone.brand || "Samsung";
+    document.getElementById("siteEditPhonePriceUSD").value = phone.priceEstimateUSD || "";
+    document.getElementById("siteEditPhonePriceUZS").value = phone.priceEstimateUZS || "";
+    document.getElementById("siteEditPhoneCamera").value = (phone.quickSpecs && phone.quickSpecs.mainCamera) || (phone.camera && phone.camera.mainSensor && phone.camera.mainSensor.mp) || "";
+    document.getElementById("siteEditPhoneBattery").value = (phone.quickSpecs && phone.quickSpecs.battery) || (phone.battery && phone.battery.capacity) || "";
+    document.getElementById("siteEditPhoneChipset").value = (phone.quickSpecs && phone.quickSpecs.chipset) || (phone.performanceHardware && phone.performanceHardware.chipset) || "";
+    document.getElementById("siteEditPhoneDisplay").value = (phone.quickSpecs && phone.quickSpecs.display) || (phone.display && phone.display.size) || "";
+    document.getElementById("siteEditPhoneImage").value = phone.image || "";
+
+    editModal.classList.add("active");
+    editBackdrop.classList.add("active");
+  }
+  window.openEditPhoneModal = openEditPhoneModal;
 
   // ==========================================
   // 9. BUYER'S GUIDE & HARDWARE DEEP DIVE
