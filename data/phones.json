@@ -101,16 +101,7 @@
         "Qutida quvvatlovchi blok yo'q"
       ],
       "bestFor": "Eng yuqori unumdorlik, professional suratga olish, katta ekran va biznes uchun stilus kerak bo'lganlarga."
-    },
-    "reviews": [
-      {
-        "id": "rev-1",
-        "userName": "Farrux M.",
-        "rating": 5,
-        "date": "2024-10-01",
-        "comment": "Gorilla Armor shishasi quyoshda umuman yaltiramaydi, 200MP kamerasi esa har qanday mayda yozuvlarni ko'rsatadi!"
-      }
-    ]
+    }
   },
   {
     "id": "iphone-16-pro-max",
@@ -213,8 +204,7 @@
         "Qutida adapter yo'q"
       ],
       "bestFor": "Mobil videograflar, kontent yaratuvchilar, batareyasi eng uzoq yetadigan katta ekranli telefon qidirayotganlarga."
-    },
-    "reviews": []
+    }
   },
   {
     "id": "xiaomi-14-ultra",
@@ -317,8 +307,109 @@
         "Optik barmoq izi skaneri ultratovushlikka qaraganda biroz sekinroq"
       ],
       "bestFor": "Suratga olishda professional fotoapparat sifatini xohlaydigan fotograflar va texnologiya ixlosmandlari."
+    }
+  },
+  {
+    "id": "google-pixel-9-pro-xl",
+    "name": "Google Pixel 9 Pro XL",
+    "brand": "Google",
+    "category": "premium",
+    "badge": "Hisoblash Optikasi",
+    "priceEstimateUSD": 1099,
+    "priceEstimateUZS": "14 000 000 so'm",
+    "releaseYear": 2024,
+    "image": "https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=800&q=80",
+    "rating": 9.5,
+    "hardwareScores": {
+      "overall": 95,
+      "camera": 98,
+      "battery": 92,
+      "display": 98,
+      "performance": 92,
+      "durability": 95
     },
-    "reviews": []
+    "quickSpecs": {
+      "display": "6.8\" Super Actua LTPO OLED, 1-120Hz, 3000 nits rekord yorqinlik",
+      "mainCamera": "50 MP (1/1.31\", f/1.68, OIS) + 48 MP (5x optik periskop) + 48 MP Ultrawide",
+      "battery": "5060 mAh, 37W simli, 23W Pixel Stand",
+      "chipset": "Google Tensor G4 (4nm Samsung) + Titan M2 xavfsizlik chipi",
+      "protection": "IP68, Gorilla Glass Victus 2 old va orqa, Polirovka qilingan alyuminiy"
+    },
+    "display": {
+      "size": "6.8 dyuym",
+      "type": "Super Actua LTPO OLED displey, 1-120Hz adaptiv tezlik, HDR",
+      "resolution": "2992 x 1344 piksel, 486 ppi",
+      "peakBrightness": "3000 nits cho'qqi yorqinlik, 2000 nits HDR",
+      "glassProtection": "Corning Gorilla Glass Victus 2",
+      "features": "To'liq tekis ekran, hoshiyalari simmetrik yupqa"
+    },
+    "camera": {
+      "overview": "Uchta professional sensor va harorat o'lchovchi apparat datchigi",
+      "mainSensor": {
+        "mp": "50 Megapiksel",
+        "sensorSize": "1/1.31\" kattalikdagi sensor",
+        "aperture": "f/1.68 keng diafragma",
+        "ois": "Dual-pixel PDAF, OIS va EIS gibrid barqarorlashtirish",
+        "pixelBinning": "4-in-1 Octa PD avtofokus"
+      },
+      "telephoto": {
+        "tele1": "48 MP periskop telefoto (5x optik kattalashtirish, f/2.8, OIS)",
+        "digitalZoom": "30x Super Res Zoom apparat-algoritmik zum"
+      },
+      "ultrawide": "48 MP ultrakeng (123˚ ko'rish burchagi, f/1.7, makro fokus 2 sm masofadan)",
+      "frontCamera": "42 MP Dual PD selfi kamerasi (f/2.2, 103˚ ultra keng burchak, avtofokus!)",
+      "videoCapabilities": "8K@30fps (Video Boost), 4K@60fps barcha linzalarda, 10-bit HDR",
+      "hardwareHighlights": [
+        "Maxsus jismoniy harorat sensori (orqa kamera yonida obyektlar haroratini o'lchaydi)",
+        "42 MP old kamera avtofokus bilan — eng tiniq selfi apparatlaridan biri",
+        "Ko'p zonali LDAF (Laser Detect Auto-Focus) masofa datchigi"
+      ]
+    },
+    "battery": {
+      "capacity": "5060 mAh",
+      "wiredCharging": "37W tezkor quvvatlash (70% zaryad 30 daqiqada)",
+      "wirelessCharging": "23W gacha simsiz quvvatlash (Pixel Stand 2 bilan)",
+      "reverseCharging": "Battery Share simsiz teskari quvvatlash",
+      "screenOnTime": "8 - 8.5 soat faol ekran vaqti",
+      "chargerInBox": "Qutida zaryadlovchi blok yo'q"
+    },
+    "performanceHardware": {
+      "chipset": "Google Tensor G4 (4nm)",
+      "cpuConfig": "8 yadroli (1x 3.1 GHz Cortex-X4 + 3x Cortex-A720 + 4x Cortex-A520)",
+      "gpu": "Mali-G715 MC7",
+      "coolingSystem": "Bug'lanish kamerasi (Vapor Chamber) — Pixel seriyasidagi ilk apparat sovitkich",
+      "ramOptions": "16 GB LPDDR5X (rekord hajm)",
+      "storageOptions": "128 GB / 256 GB / 512 GB / 1 TB UFS 3.1"
+    },
+    "bodyAndBuild": {
+      "materials": "Yaltiroq sayqallangan metall rom, Gorilla Glass Victus 2 ipakdek mat orqa shisha",
+      "dimensions": "162.8 x 76.6 x 8.5 mm",
+      "weight": "221 gramm",
+      "waterResistance": "IP68 (1.5 metr chuqurlikda 30 daqiqa)",
+      "audio": "Stereo dinamiklar, 3 ta mikrofon, fazoviy shovqin kamaytirish",
+      "haptics": "Juda yumshoq va aniq X-axis taktil motor",
+      "biometrics": "Yangi ultratovushli ekran osti barmoq izi skaneri (juda tez va aniq)"
+    },
+    "connectivity": {
+      "wifi": "Wi-Fi 7 (802.11be)",
+      "bluetooth": "Bluetooth 5.3, ikkita antenna",
+      "usb": "USB Type-C 3.2",
+      "nfc": "Mavjud va UWB (Ultra-Wideband chipi)",
+      "sim": "Nano-SIM + eSIM"
+    },
+    "verdictHardware": {
+      "pros": [
+        "3000 nits Super Actua ekrani — quyosh ostida hayratlanarli darajada yorqin",
+        "Yangi ultratovushli barmoq izi skaneri va 42 MP selfi kamerasi",
+        "16 GB RAM va nihoyat kiritilgan bug'lanish kamerasi tufayli qizimaydi",
+        "Gorilla Glass Victus 2 bilan himoyalangan mustahkam metall korpus"
+      ],
+      "cons": [
+        "Tensor G4 xom grafika quvvati bo'yicha Snapdragon 8 Gen 3 dan orqada",
+        "Boshlang'ich versiyasi atigi 128 GB UFS 3.1 xotiraga ega"
+      ],
+      "bestFor": "Realistik ranglarda suratga tushishni sevadiganlar, toza va yorqin ekranni qadrlaydiganlar."
+    }
   },
   {
     "id": "oneplus-12",
@@ -420,8 +511,109 @@
         "Ekranning ikki yoni kavisli (barchaga ham yoqmasligi mumkin)"
       ],
       "bestFor": "Narx va sifat nisbatida dunyoning eng yaxshi flagmani, kuchli batareya va o'yin sevuvchilar."
+    }
+  },
+  {
+    "id": "asus-rog-phone-8-pro",
+    "name": "Asus ROG Phone 8 Pro",
+    "brand": "Asus",
+    "category": "gaming",
+    "badge": "O'yin Maxlugi",
+    "priceEstimateUSD": 1199,
+    "priceEstimateUZS": "15 000 000 so'm",
+    "releaseYear": 2024,
+    "image": "https://images.unsplash.com/photo-1546868871-7041f2a55e12?auto=format&fit=crop&w=800&q=80",
+    "rating": 9.6,
+    "hardwareScores": {
+      "overall": 96,
+      "camera": 89,
+      "battery": 97,
+      "display": 99,
+      "performance": 100,
+      "durability": 95
     },
-    "reviews": []
+    "quickSpecs": {
+      "display": "6.78\" Samsung E6 AMOLED, rekord 165Hz chastota, 2500 nits",
+      "mainCamera": "50 MP Sony IMX890 (6-o'qli gibrid gimbal stabilizator!) + 32 MP Telephoto (3x OIS)",
+      "battery": "5500 mAh, 65W HyperCharge, 15W Qi simsiz",
+      "chipset": "Snapdragon 8 Gen 3, GameCool 8 sovitish tizimi, 24 GB RAM gacha!",
+      "protection": "IP68 (tarixda birinchi marta geymerlik telefonida), AniMe Vision LED matritsasi"
+    },
+    "display": {
+      "size": "6.78 dyuym",
+      "type": "Samsung Flexible AMOLED, 1-120Hz LTPO (o'yinlarda 165Hz gacha)",
+      "resolution": "2400 x 1080 piksel, 388 ppi",
+      "peakBrightness": "2500 nits cho'qqi yorqinlik",
+      "glassProtection": "Corning Gorilla Glass Victus 2",
+      "features": "720Hz sensorli so'rov chastotasi (barmoq tegishiga 23ms reaktsiya tezligi)"
+    },
+    "camera": {
+      "overview": "6-o'qli mexanik gimbal stabilizator bilan jihozlangan geymerlik kamerasi",
+      "mainSensor": {
+        "mp": "50 Megapiksel",
+        "sensorSize": "1/1.56\" Sony IMX890 sensori",
+        "aperture": "f/1.9 diafragma",
+        "ois": "6-Axis Hybrid Gimbal Stabilizer 3.0 (kameralar orasida eng kuchli jismoniy stabilizator)",
+        "pixelBinning": "2.0µm piksellar"
+      },
+      "telephoto": {
+        "tele1": "32 MP telefoto (3x optik yaqinlashtirish, f/2.4, OIS)",
+        "digitalZoom": "30x HyperClarity zoom"
+      },
+      "ultrawide": "13 MP ultrakeng (120˚ erkin shaklli linzalar)",
+      "frontCamera": "32 MP RGBW sensori, 90˚ burchak",
+      "videoCapabilities": "8K@24fps, 4K@60fps, Gimbal barqarorlashtirish video rejimi",
+      "hardwareHighlights": [
+        "6-o'qli jismoniy mini-gimbal: telefon silkinganda kamera mexanik tarzda qarshi harakatlanadi",
+        "Orqa qopqoqda 341 ta mini-LED diodli dasturlanadigan AniMe Vision ekranchasi",
+        "AirTrigger ultratovushli yon tugmalar (joystik triggerlari o'rnini bosadi)"
+      ]
+    },
+    "battery": {
+      "capacity": "5500 mAh (ikkita katakchali)",
+      "wiredCharging": "65W HyperCharge (100% zaryad 39 daqiqada)",
+      "wirelessCharging": "15W Qi simsiz zaryadlash",
+      "reverseCharging": "10W simli teskari quvvatlash",
+      "screenOnTime": "10 - 11 soat ekran vaqti",
+      "chargerInBox": "Bor! 65W original quvvatlagich blok va o'ralgan kabel qutida"
+    },
+    "performanceHardware": {
+      "chipset": "Qualcomm Snapdragon 8 Gen 3 (3.3 GHz eng yuqori chastota)",
+      "cpuConfig": "8 yadroli flagman arxitektura",
+      "gpu": "Adreno 750",
+      "coolingSystem": "GameCool 8: 360° SoC Cooling Gen 2, bor nitridi o'tkazgich va tashqi AeroActive Cooler shamollatgichi",
+      "ramOptions": "16 GB yoki rekord 24 GB LPDDR5X!",
+      "storageOptions": "512 GB / 1 TB UFS 4.0"
+    },
+    "bodyAndBuild": {
+      "materials": "Alyuminiy korpus, Gorilla Glass orqa panel, orqada AniMe Vision LED ekrani",
+      "dimensions": "163.8 x 76.8 x 8.9 mm",
+      "weight": "225 gramm",
+      "waterResistance": "IP68 suv va changdan himoyalanish",
+      "audio": "Qo'sh stereo dinamiklar, 3.5mm naushnik tirqishi (Hi-Res DAC apparati bilan!)",
+      "haptics": "Ikki tomonlama X-axis tebranish motori",
+      "biometrics": "Optik ekran osti barmoq izi skaneri"
+    },
+    "connectivity": {
+      "wifi": "Wi-Fi 7",
+      "bluetooth": "Bluetooth 5.4",
+      "usb": "2 ta alohida USB Type-C porti! (biri pastda, biri yon tomonda o'yin o'ynab quvvatlash uchun)",
+      "nfc": "Mavjud",
+      "sim": "Dual Nano-SIM"
+    },
+    "verdictHardware": {
+      "pros": [
+        "165Hz rekord ekran tezligi va 720Hz sensorli javob",
+        "2 ta Type-C porti va 3.5mm naushnik tirqishi bor",
+        "Geymerlik telefonlarida ilk bor to'liq IP68 suvdan himoya",
+        "6-o'qli jismoniy gimbal stabilizatori va korpusdagi ultratovushli triggerlar"
+      ],
+      "cons": [
+        "Kamera kadr detallari bo'yicha iPhone 16 Pro Max yoki S24 Ultra darajasida emas",
+        "Dizayn o'ta jiddiy kishilar uchun biroz geymercha tuyulishi mumkin"
+      ],
+      "bestFor": "PUBG Mobile, Genshin Impact, Call of Duty kabi og'ir o'yinlar ishqibozlari va maksimal unumdorlik istovchilar."
+    }
   },
   {
     "id": "redmi-note-13-pro-plus",
@@ -522,8 +714,7 @@
         "Simsiz quvvatlash mavjud emas"
       ],
       "bestFor": "Hamyonbop narxda flagman darajasidagi ekran, tez zaryad va suvdan himoya xohlovchilar."
-    },
-    "reviews": []
+    }
   },
   {
     "id": "samsung-galaxy-a55",
@@ -624,7 +815,411 @@
         "Zaryadlash tezligi 25W bilan cheklangan va qutida blok yo'q"
       ],
       "bestFor": "Uzoq yillar xizmat qiladigan, mustahkam metall va shishali, suvdan himoyalangan ishonchli telefon qidirganlarga."
+    }
+  },
+  {
+    "id": "poco-f6-pro",
+    "name": "Poco F6 Pro",
+    "brand": "Poco",
+    "category": "flagship_killer",
+    "badge": "Tezlik & Unumdorlik",
+    "priceEstimateUSD": 499,
+    "priceEstimateUZS": "6 300 000 so'm",
+    "releaseYear": 2024,
+    "image": "https://images.unsplash.com/photo-1546868871-7041f2a55e12?auto=format&fit=crop&w=800&q=80",
+    "rating": 9.3,
+    "hardwareScores": {
+      "overall": 93,
+      "camera": 88,
+      "battery": 95,
+      "display": 97,
+      "performance": 96,
+      "durability": 90
     },
-    "reviews": []
+    "quickSpecs": {
+      "display": "6.67\" WQHD+ Flow AMOLED, 120Hz, 4000 nits, 3840Hz PWM",
+      "mainCamera": "50 MP Light Hunter 800 (1/1.55\", f/1.6, OIS) + 8 MP Ultrawide",
+      "battery": "5000 mAh, 120W HyperCharge (19 daqiqada 100%)",
+      "chipset": "Snapdragon 8 Gen 2 (4nm), LiquidCool 4.0 Iceloop",
+      "protection": "Alyuminiy ramka, Shisha orqa panel, IP54"
+    },
+    "display": {
+      "size": "6.67 dyuym",
+      "type": "Flow AMOLED, 120Hz, Dolby Vision, 68 milliard rang, 3840Hz PWM",
+      "resolution": "3200 x 1440 piksel (Haqiqiy 2K WQHD+), 526 ppi",
+      "peakBrightness": "4000 nits cho'qqi yorqinlik",
+      "glassProtection": "Corning Gorilla Glass 5",
+      "features": "O'ta yuqori piksel zichligi va ko'z charchashiga qarshi apparat filtrlari"
+    },
+    "camera": {
+      "overview": "50 MP Light Hunter 800 sensori va OIS barqarorlashtirish",
+      "mainSensor": {
+        "mp": "50 Megapiksel",
+        "sensorSize": "1/1.55\" Light Fusion 800 sensori",
+        "aperture": "f/1.6 keng diafragma",
+        "ois": "Apparat optik tasvir barqarorlashtirish (OIS)",
+        "pixelBinning": "Dual Native ISO Fusion Max"
+      },
+      "telephoto": {
+        "tele1": "Alohida telefoto yo'q (2x raqamli crop)",
+        "digitalZoom": "10x raqamli yaqinlashtirish"
+      },
+      "ultrawide": "8 MP (f/2.2)",
+      "frontCamera": "16 MP, f/2.4",
+      "videoCapabilities": "8K@24fps, 4K@60fps",
+      "hardwareHighlights": [
+        "1/1.55 dyuymli katta sensor past yorug'likda juda yaxshi ishlaydi"
+      ]
+    },
+    "battery": {
+      "capacity": "5000 mAh",
+      "wiredCharging": "120W HyperCharge (19 daqiqada 100%)",
+      "wirelessCharging": "Yo'q",
+      "reverseCharging": "Simli",
+      "screenOnTime": "8 - 8.5 soat faol ekran vaqti",
+      "chargerInBox": "Bor! 120W original quvvatlovchi blok qutida"
+    },
+    "performanceHardware": {
+      "chipset": "Qualcomm Snapdragon 8 Gen 2 (4nm TSMC)",
+      "cpuConfig": "8 yadroli flagman arxitekturasi (1x 3.2 GHz Cortex-X3 + 4x A715/A710 + 3x A510)",
+      "gpu": "Adreno 740",
+      "coolingSystem": "5000 mm² maydonli LiquidCool Technology 4.0 IceLoop bug'lanish kamerasi",
+      "ramOptions": "12 GB / 16 GB LPDDR5X",
+      "storageOptions": "256 GB / 512 GB / 1 TB UFS 4.0"
+    },
+    "bodyAndBuild": {
+      "materials": "Metall alyuminiy rom, baxmalsimon teksturali shisha orqa panel",
+      "dimensions": "160.9 x 75.0 x 8.2 mm",
+      "weight": "209 gramm",
+      "waterResistance": "IP54 sachrashdan himoya",
+      "audio": "Stereo dinamiklar, Hi-Res Audio, Dolby Atmos",
+      "haptics": "X-axis chiziqli tebranish motori",
+      "biometrics": "Optik ekran osti barmoq izi skaneri"
+    },
+    "connectivity": {
+      "wifi": "Wi-Fi 7",
+      "bluetooth": "Bluetooth 5.3",
+      "usb": "USB Type-C 2.0",
+      "nfc": "Mavjud + Infraqizil port",
+      "sim": "Dual Nano-SIM"
+    },
+    "verdictHardware": {
+      "pros": [
+        "$500 narxda flagman Snapdragon 8 Gen 2 va UFS 4.0 xotira",
+        "2K WQHD+ 4000 nits ultra tiniq displey",
+        "120W zaryadlovchi blok qutida mavjud",
+        "Metall rom va sifatli materiallar"
+      ],
+      "cons": [
+        "IP54 suvdan himoyasi pastroq (faqat yomg'ir sachrashi)",
+        "Yordamchi kameralar (8 MP ultrakeng) oddiy darajada"
+      ],
+      "bestFor": "O'yinlar, yuqori tezlik va 2K sifatli ekranni hamyonbop narxda xohlaydigan foydalanuvchilar."
+    }
+  },
+  {
+    "id": "vivo-x100-pro",
+    "name": "Vivo X100 Pro",
+    "brand": "Vivo",
+    "category": "premium",
+    "badge": "Optik Mo''jiza",
+    "priceEstimateUSD": 999,
+    "priceEstimateUZS": "12 800 000 so'm",
+    "releaseYear": 2024,
+    "image": "https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=800&q=80",
+    "rating": 9.6,
+    "hardwareScores": {
+      "overall": 96,
+      "camera": 99,
+      "battery": 96,
+      "display": 95,
+      "performance": 97,
+      "durability": 95
+    },
+    "quickSpecs": {
+      "display": "6.78\" LTPO AMOLED, 120Hz, 3000 nits, 2160Hz PWM",
+      "mainCamera": "50 MP Zeiss 1\" Sony IMX989 (OIS) + 50 MP Zeiss APO Floating Periskop + 50 MP Ultrawide",
+      "battery": "5400 mAh BlueOcean batareya, 100W simli, 50W simsiz",
+      "chipset": "MediaTek Dimensity 9300 (4nm barcha yadrolari quvvatli) + Vivo V3 maxsus foto chipi",
+      "protection": "IP68, Eko-charm yoki shisha, Zeiss T* qoplama"
+    },
+    "display": {
+      "size": "6.78 dyuym",
+      "type": "8T LTPO AMOLED, 1-120Hz, 1 milliard rang, 2160Hz PWM yuqori chastotali chaqnoshga qarshi",
+      "resolution": "2800 x 1260 piksel, 453 ppi",
+      "peakBrightness": "3000 nits cho'qqi yorqinlik",
+      "glassProtection": "Mustahkamlangan shisha",
+      "features": "Yorug'likni kamaytirganda ham ko'zga ziyon yetkazmaydigan sog'lom ekran"
+    },
+    "camera": {
+      "overview": "Zeiss bilan birgalikda yaratilgan haqiqiy 1 dyuymli asosiy sensor va jahondagi ilk APO sertifikatli suzuvchi periskop",
+      "mainSensor": {
+        "mp": "50 Megapiksel",
+        "sensorSize": "1.0\" dyuymli ulkan Sony IMX989 sensori",
+        "aperture": "f/1.75 diafragma, 1G+7P yuqori sifatli shisha linzalar",
+        "ois": "Apparat optik stabilizatsiya (OIS CIPA 4.5 darajali)",
+        "pixelBinning": "3.2µm 4-in-1 yirik piksellar"
+      },
+      "telephoto": {
+        "tele1": "50 MP Zeiss APO Floating Periskop linza (4.3x optik, f/2.5, 100mm, OIS, 15 sm dan makro)",
+        "digitalZoom": "100x Zeiss Ultra-clear zoom"
+      },
+      "ultrawide": "50 MP (f/2.0, 119˚, 1/2.76\" sensor)",
+      "frontCamera": "32 MP, f/2.0",
+      "videoCapabilities": "8K@30fps, 4K@60fps kinematografik portret video (Vivo V3 6nm maxsus apparat chipi bilan)",
+      "hardwareHighlights": [
+        "Zeiss T* qoplamasi: shisha orqali o'tadigan yorug'lik akslanishini nolga tushiradi",
+        "APO (Apoxromatik) linza: ranglar buzilishini (xromatik aberratsiyani) apparat darajasida yo'qotadi",
+        "Alohida apparat chipi — Vivo V3 hisoblash chipi 4K portret video qayta ishlaydi"
+      ]
+    },
+    "battery": {
+      "capacity": "5400 mAh BlueOcean yuqori energiya zichligiga ega akkumulyator",
+      "wiredCharging": "100W FlashCharge (100% zaryad 31 daqiqada)",
+      "wirelessCharging": "50W simsiz tezkor zaryadlash",
+      "reverseCharging": "Teskari simsiz zaryad",
+      "screenOnTime": "9.5 - 10.5 soat faol ekran vaqti",
+      "chargerInBox": "Bor! Qutida 120W FlashCharge original adapter mavjud"
+    },
+    "performanceHardware": {
+      "chipset": "MediaTek Dimensity 9300 (4nm TSMC 'All Big Core' arxitekturasi)",
+      "cpuConfig": "4x 3.25 GHz Cortex-X4 super yadrolar + 4x 2.0 GHz Cortex-A720",
+      "gpu": "Immortalis-G720 MC12 (apparat Ray Tracing)",
+      "coolingSystem": "Katta maydonli zanglamaydigan po'lat bug'lanish kamerasi",
+      "ramOptions": "16 GB LPDDR5T (9600 Mbps — dunyodagi eng tezkor operativ xotira)",
+      "storageOptions": "512 GB / 1 TB UFS 4.0"
+    },
+    "bodyAndBuild": {
+      "materials": "Aviatsiya alyuminiy rom, quyosh nuri effekti beruvchi mat shisha yoki to'q sariq eko-charm",
+      "dimensions": "164.1 x 75.3 x 8.9 mm",
+      "weight": "221 gramm",
+      "waterResistance": "IP68 sertifikati",
+      "audio": "Stereo dinamiklar, Hi-Res Audio sertifikatlangan audio chip",
+      "haptics": "X-axis taktil tebranish datchigi",
+      "biometrics": "Optik ekran osti barmoq izi skaneri"
+    },
+    "connectivity": {
+      "wifi": "Wi-Fi 7",
+      "bluetooth": "Bluetooth 5.4, aptX Lossless",
+      "usb": "USB Type-C 3.2 Gen 1",
+      "nfc": "Mavjud + Infraqizil port",
+      "sim": "Dual Nano-SIM + eSIM"
+    },
+    "verdictHardware": {
+      "pros": [
+        "1 dyuymli Sony sensori va Zeiss APO linzasi — portret va yaqinlashtirishda benazir",
+        "5400 mAh BlueOcean batareya va 100W simli + 50W simsiz quvvatlash",
+        "LPDDR5T 9600 Mbps eng tezkor RAM xotirasi",
+        "Qutida 120W adapter to'liq beriladi va IP68 himoyaga ega"
+      ],
+      "cons": [
+        "Kamera halqasi juda katta",
+        "Ekran yonlari kavisli"
+      ],
+      "bestFor": "Portret suratlar, telefoto makro va yuqori darajadagi mobil suratkashlik ixlosmandlari."
+    }
+  },
+  {
+    "id": "nothing-phone-2",
+    "name": "Nothing Phone (2)",
+    "brand": "Nothing",
+    "category": "midrange",
+    "badge": "Noyob Dizayn & Glif",
+    "priceEstimateUSD": 599,
+    "priceEstimateUZS": "7 600 000 so'm",
+    "releaseYear": 2023,
+    "image": "https://images.unsplash.com/photo-1511707171634-5f897ff02560?auto=format&fit=crop&w=800&q=80",
+    "rating": 9.2,
+    "hardwareScores": {
+      "overall": 92,
+      "camera": 89,
+      "battery": 92,
+      "display": 94,
+      "performance": 93,
+      "durability": 91
+    },
+    "quickSpecs": {
+      "display": "6.7\" LTPO OLED, 1-120Hz, 1600 nits, Simmetrik hoshiyalar",
+      "mainCamera": "50 MP Sony IMX890 (f/1.88, OIS) + 50 MP Samsung JN1 Ultrawide",
+      "battery": "4700 mAh, 45W simli, 15W simsiz, 5W teskari simsiz",
+      "chipset": "Qualcomm Snapdragon 8+ Gen 1 (4nm TSMC)",
+      "protection": "Glyph Interface LED apparat matritsasi (33 zona), IP54"
+    },
+    "display": {
+      "size": "6.7 dyuym",
+      "type": "Moslashuvchan LTPO OLED, 1-120Hz, 10-bit ranglar",
+      "resolution": "2412 x 1080 piksel (Full HD+), 394 ppi",
+      "peakBrightness": "1600 nits maksimal yorqinlik",
+      "glassProtection": "Corning Gorilla Glass",
+      "features": "Barcha 4 tarafdan mutlaqo bir xil o'lchamdagi simmetrik yupqa romlar"
+    },
+    "camera": {
+      "overview": "Ikkita 50 MP sensor va orqadagi Glyph chiroqlari yordamida yumshoq studiya yoritgichi",
+      "mainSensor": {
+        "mp": "50 Megapiksel",
+        "sensorSize": "1/1.56\" Sony IMX890 sensori",
+        "aperture": "f/1.88 diafragma",
+        "ois": "Apparat optik tasvir barqarorlashtirish (OIS va EIS)",
+        "pixelBinning": "4-in-1 piksel birlashtirish"
+      },
+      "telephoto": {
+        "tele1": "Alohida optik telefoto yo'q (2x sensor ichi kattalashtirish)",
+        "digitalZoom": "10x raqamli yaqinlashtirish"
+      },
+      "ultrawide": "50 MP Samsung JN1 (114˚ ko'rish burchagi, f/2.2, 4 sm makro)",
+      "frontCamera": "32 MP Sony IMX615, f/2.45, 1080p 60fps",
+      "videoCapabilities": "4K@60fps, Action Mode barqarorlik rejimi",
+      "hardwareHighlights": [
+        "Glyph Interface: orqa paneldagi 33 ta alohida boshqariluvchi LED zonalar portretda chiroq o'rnini bosadi",
+        "Shovqinsiz orqa fon yoritgichi: an'anaviy chaqnoqdan (flash) farqli ravishda ko'zni qamashtirmaydi"
+      ]
+    },
+    "battery": {
+      "capacity": "4700 mAh",
+      "wiredCharging": "45W tezkor quvvatlash (55 daqiqada 100%)",
+      "wirelessCharging": "15W Qi simsiz zaryadlash",
+      "reverseCharging": "5W simsiz teskari quvvatlash (quloqchinlarni orqa qopqoq ustida zaryadlash)",
+      "screenOnTime": "8 - 8.5 soat faol ekran vaqti",
+      "chargerInBox": "Qutida zaryadlovchi blok yo'q (shaffof dizayndagi maxsus Type-C kabel)"
+    },
+    "performanceHardware": {
+      "chipset": "Qualcomm Snapdragon 8+ Gen 1 (4nm TSMC tejamkor versiyasi)",
+      "cpuConfig": "8 yadroli (1x 3.0 GHz Cortex-X2 + 3x Cortex-A710 + 4x Cortex-A510)",
+      "gpu": "Adreno 730",
+      "coolingSystem": "Katta po'lat bug'lanish kamerasi va grafit qatlamlari",
+      "ramOptions": "8 GB / 12 GB / 16 GB LPDDR5",
+      "storageOptions": "128 GB / 256 GB / 512 GB UFS 3.1"
+    },
+    "bodyAndBuild": {
+      "materials": "100% qayta ishlangan alyuminiy o'rta rom, shaffof egilgan shisha orqa qopqoq",
+      "dimensions": "162.1 x 76.4 x 8.6 mm",
+      "weight": "201 gramm",
+      "waterResistance": "IP54 sachrashdan himoya",
+      "audio": "Stereo dinamiklar",
+      "haptics": "Aniq va yoqimli taktil tebranish motori",
+      "biometrics": "Optik ekran osti barmoq izi skaneri"
+    },
+    "connectivity": {
+      "wifi": "Wi-Fi 6",
+      "bluetooth": "Bluetooth 5.3",
+      "usb": "USB Type-C 2.0",
+      "nfc": "Mavjud",
+      "sim": "Dual Nano-SIM"
+    },
+    "verdictHardware": {
+      "pros": [
+        "Shaffof orqa panel va 33 zonali apparat Glyph LED chiroqlari",
+        "LTPO OLED displey mutlaqo teng hoshiyalar bilan",
+        "Simsiz va teskari simsiz quvvatlash mavjud",
+        "Snapdragon 8+ Gen 1 juda barqaror va qizimaydi"
+      ],
+      "cons": [
+        "IP54 himoyasi (suvga botirib bo'lmaydi)",
+        "Telefoto periskop linzasi yo'q"
+      ],
+      "bestFor": "Noodatiy, futuristik ko'rinishni sevadiganlar va qulay simmetrik ekranni qadrlaydiganlar."
+    }
+  },
+  {
+    "id": "sony-xperia-1-vi",
+    "name": "Sony Xperia 1 VI",
+    "brand": "Sony",
+    "category": "flagship",
+    "badge": "Pro Audio & Optika",
+    "priceEstimateUSD": 1299,
+    "priceEstimateUZS": "16 500 000 so'm",
+    "releaseYear": 2024,
+    "image": "https://images.unsplash.com/photo-1580910051074-3eb694886505?auto=format&fit=crop&w=800&q=80",
+    "rating": 9.5,
+    "hardwareScores": {
+      "overall": 95,
+      "camera": 97,
+      "battery": 98,
+      "display": 95,
+      "performance": 96,
+      "durability": 96
+    },
+    "quickSpecs": {
+      "display": "6.5\" FHD+ LTPO OLED, 1-120Hz, Powered by BRAVIA, 1500 nits",
+      "mainCamera": "48 MP Exmor T (1/1.35\", f/1.9, OIS) + 12 MP Uzluksiz Optik Zum (85-170mm, 3.5x-7.1x!)",
+      "battery": "5000 mAh (2 kun yetadi!), 30W simli, 15W Qi simsiz",
+      "chipset": "Snapdragon 8 Gen 3, Vapor chamber sovitish",
+      "protection": "IP68/IP65, Gorilla Glass Victus 2, 3.5mm audio tirqish va MicroSD!"
+    },
+    "display": {
+      "size": "6.5 dyuym (19.5:9 qulay zamonaviy nisbat)",
+      "type": "LTPO OLED, 1-120Hz, HDR, Sony BRAVIA televizor rang protsessori apparati bilan",
+      "resolution": "2340 x 1080 piksel (Full HD+), 396 ppi",
+      "peakBrightness": "1500 nits (oldingi Xperia'dan 50% yorqinroq), Sunlight Vision",
+      "glassProtection": "Corning Gorilla Glass Victus 2 oldida, Victus orqada",
+      "features": "Ekranda tirqish (o'yiq) yo'q: kamera yuqori ingichka ramkada joylashgan"
+    },
+    "camera": {
+      "overview": "Dunyoning yagona uzluksiz optik harakatlanuvchi linzali periskop zum kamerasi (85mm dan 170mm gacha)",
+      "mainSensor": {
+        "mp": "48 Megapiksel (24mm ekvivalent)",
+        "sensorSize": "1/1.35\" ikki qatlamli tranzistorli Exmor T for mobile sensori",
+        "aperture": "f/1.9 diafragma",
+        "ois": "Optical SteadyShot (OIS gibrid barqarorlik)",
+        "pixelBinning": "Past shovqinli yirik piksellar"
+      },
+      "telephoto": {
+        "tele1": "12 MP Haqiqiy Optik Uzluksiz Zoom (85mm dan 170mm gacha jismoniy siljish, 3.5x dan 7.1x gacha optik, f/2.3-f/3.5, OIS)",
+        "teleMacro": "Telefoto Makro rejimi (4 sm dan aqlbovar qilmas mayda detallarni yaqinlashtiradi)"
+      },
+      "ultrawide": "12 MP (16mm, f/2.2, 1/2.5\" Exmor RS sensor)",
+      "frontCamera": "12 MP Exmor RS, f/2.0, 4K 60fps HDR",
+      "videoCapabilities": "4K@120fps barcha uchta kamerada! S-Cinetone rang profili",
+      "hardwareHighlights": [
+        "Fizik apparat ikki bosqichli suratga olish tugmasi (yarim bosilganda fokus, to'liq bosilganda surat)",
+        "Haqiqiy siljuvchi optik linzalar: 85mm dan 170mm gacha bo'lgan oraliqdagi har bir zum haqiqiy optik sifatda!",
+        "ZEISS T* qoplamasi va Alpha fotoapparatlarining ko'zni aniqlash avtofokus datchiklari"
+      ]
+    },
+    "battery": {
+      "capacity": "5000 mAh (Sony batareyani 4 yil degradatsiyasiz saqlash texnologiyasi bilan)",
+      "wiredCharging": "30W USB-PD tezkor quvvatlash (50% ga 30 daqiqada)",
+      "wirelessCharging": "15W Qi simsiz zaryadlash",
+      "reverseCharging": "Simsiz batareya ulashish",
+      "screenOnTime": "11 - 12 soat faol ekran vaqti (flagmanlar ichida mutlaq rekordchi)",
+      "chargerInBox": "Qutida zaryadlovchi blok yo'q (ekologik qadoq)"
+    },
+    "performanceHardware": {
+      "chipset": "Qualcomm Snapdragon 8 Gen 3 (4nm)",
+      "cpuConfig": "8 yadroli eng kuchli flagman protsessor",
+      "gpu": "Adreno 750",
+      "coolingSystem": "Sony Xperia seriyasidagi ilk marta qo'llanilgan katta bug'lanish kamerasi (Vapor chamber)",
+      "ramOptions": "12 GB LPDDR5X",
+      "storageOptions": "256 GB / 512 GB UFS 4.0 (MicroSD karta tirqishi orqali 1.5 TB gacha kengaytirish mumkin!)"
+    },
+    "bodyAndBuild": {
+      "materials": "Taktil nozik chiziqli teksturali alyuminiy rom, mikro-nuqtali tutqichli Gorilla Glass Victus orqa shisha",
+      "dimensions": "162.0 x 74.0 x 8.2 mm",
+      "weight": "192 gramm (o'ta yengil)",
+      "waterResistance": "IP68 va IP65 suv oqimi hamda suvga cho'kishdan to'liq himoya",
+      "audio": "To'liq old tomonga yo'naltirilgan muvozanatli stereo dinamiklar, 3.5mm oltin qoplamali naushnik tirqishi, Hi-Res DAC",
+      "haptics": "Dinamik tebranish tizimi (Dynamic Vibration System)",
+      "biometrics": "Yon tomondagi yoqish tugmasiga o'rnatilgan chaqmoqdek tez sig'imli barmoq izi skaneri"
+    },
+    "connectivity": {
+      "wifi": "Wi-Fi 7",
+      "bluetooth": "Bluetooth 5.4, LE Audio, LDAC, aptX Adaptive",
+      "usb": "USB Type-C 3.2 Gen 2 (DisplayPort video chiqishi bilan)",
+      "nfc": "Mavjud",
+      "sim": "Nano-SIM + eSIM yoki MicroSD xotira kartasi (tirqish ignasiz qo'lda ochiladi!)"
+    },
+    "verdictHardware": {
+      "pros": [
+        "Flagmanlar ichida yagona: 3.5mm naushnik tirqishi va MicroSD xotira kartasi saqlangan",
+        "Jismoniy 3.5x-7.1x doimiy harakatlanuvchi optik periskop linzasi",
+        "Ikki kun bemalol yetadigan aqlbovar qilmas 12 soatlik batareya vaqti",
+        "Ekranda tirqishsiz toza ko'rinish va o'ta yengil 192g titanik korpus"
+      ],
+      "cons": [
+        "Narxi juda qimmat ($1300 atrofida)",
+        "Ekran 4K dan Full HD+ ga tushirilgan"
+      ],
+      "bestFor": "Audiophillar (sifatli quloqchin egalari), professional suratkashlar va MicroSD kartasiz yashay olmaydiganlar."
+    }
   }
 ]

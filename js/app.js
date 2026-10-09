@@ -1362,6 +1362,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   async function calculateAdvisorResult() {
     let bestPhone;
+    let alternatives = [];
 
     // Try backend API first
     try {
@@ -1373,26 +1374,93 @@ document.addEventListener("DOMContentLoaded", () => {
       if (res.ok) {
         const data = await res.json();
         bestPhone = data.recommended;
+        alternatives = data.alternatives || [];
       }
     } catch (e) {}
 
-    // Fallback if API unavailable
+    // Precise client-side matching (GitHub Pages & Fallback)
     if (!bestPhone) {
-      let minPrice = 0;
-      let maxPrice = 99999;
-      if (state.advisor.budget === "budget-entry") { minPrice = 200; maxPrice = 490; }
-      else if (state.advisor.budget === "budget-mid") { minPrice = 450; maxPrice = 900; }
-      else if (state.advisor.budget === "budget-premium") { minPrice = 900; maxPrice = 99999; }
+      const { budget, priority, brand } = state.advisor;
+      const pool = (typeof PHONES_DATABASE !== "undefined" && PHONES_DATABASE.length > 0) ? [...PHONES_DATABASE] : [...state.phonesData];
 
-      let candidates = (state.phonesData.length > 0 ? state.phonesData : PHONES_DATABASE).filter(p => p.priceEstimateUSD >= minPrice && p.priceEstimateUSD <= maxPrice);
-      if (state.advisor.brand === "brand-apple") candidates = candidates.filter(p => p.brand === "Apple") || candidates;
-      else if (state.advisor.brand === "brand-samsung") candidates = candidates.filter(p => p.brand === "Samsung") || candidates;
-      else if (state.advisor.brand === "brand-xiaomi") candidates = candidates.filter(p => ["Xiaomi", "OnePlus", "Poco"].includes(p.brand)) || candidates;
+      let minPrice = 0, maxPrice = Infinity;
+      if (budget === "budget-entry") { minPrice = 200; maxPrice = 490; }
+      else if (budget === "budget-mid") { minPrice = 450; maxPrice = 850; }
+      else if (budget === "budget-premium") { minPrice = 850; maxPrice = 99999; }
 
-      if (!candidates || candidates.length === 0) candidates = state.phonesData.length > 0 ? state.phonesData : PHONES_DATABASE;
-      candidates.sort((a, b) => b.hardwareScores.overall - a.hardwareScores.overall);
-      bestPhone = candidates[0];
+      let budgetMatches = pool.filter(p => p.priceEstimateUSD >= minPrice && p.priceEstimateUSD <= maxPrice);
+      let brandMatches = [];
+      if (brand === "brand-apple") {
+        brandMatches = (budgetMatches.length > 0 ? budgetMatches : pool).filter(p => p.brand === "Apple");
+      } else if (brand === "brand-samsung") {
+        brandMatches = (budgetMatches.length > 0 ? budgetMatches : pool).filter(p => p.brand === "Samsung");
+      } else if (brand === "brand-xiaomi") {
+        brandMatches = (budgetMatches.length > 0 ? budgetMatches : pool).filter(p => ["Xiaomi", "OnePlus", "Poco"].includes(p.brand));
+      }
+
+      let candidates = brandMatches.length > 0 ? brandMatches : (budgetMatches.length > 0 ? budgetMatches : pool);
+
+      const scored = candidates.map(phone => {
+        let score = phone.hardwareScores.overall;
+        if (priority === "priority-gaming") {
+          score = (phone.hardwareScores.performance * 0.6) + (phone.hardwareScores.display * 0.2) + (phone.hardwareScores.battery * 0.2);
+          if (phone.id === "asus-rog-phone-8-pro") score += 5;
+          if (phone.id === "poco-f6-pro") score += 3;
+        } else if (priority === "priority-camera") {
+          score = (phone.hardwareScores.camera * 0.7) + (phone.hardwareScores.display * 0.15) + (phone.hardwareScores.overall * 0.15);
+          if (phone.id === "xiaomi-14-ultra" || phone.id === "vivo-x100-pro") score += 3;
+        } else if (priority === "priority-battery") {
+          score = (phone.hardwareScores.battery * 0.7) + (phone.hardwareScores.durability * 0.15) + (phone.hardwareScores.overall * 0.15);
+          if (phone.id === "oneplus-12") score += 3;
+        } else if (priority === "priority-durability") {
+          score = (phone.hardwareScores.durability * 0.7) + (phone.hardwareScores.battery * 0.15) + (phone.hardwareScores.overall * 0.15);
+          if (phone.quickSpecs && phone.quickSpecs.protection && phone.quickSpecs.protection.includes("Titanium")) score += 3;
+        }
+        return { phone, calculatedScore: score };
+      });
+
+      scored.sort((a, b) => b.calculatedScore - a.calculatedScore);
+      bestPhone = scored[0].phone;
+      alternatives = scored.slice(1, 3).map(s => s.phone);
     }
+
+    // Dynamic reason text based on user priority
+    let reasonText = "";
+    if (state.advisor.priority === "priority-gaming") {
+      reasonText = `Siz og'ir o'yinlar va maksimal tezlikni tanladingiz. Ushbu smartfon <strong>${bestPhone.quickSpecs.chipset}</strong> protsessori, kuchli sovitish bug'lanish kamerasi va <strong>${bestPhone.quickSpecs.display}</strong> ekrani tufayli geymingda eng yuqori apparat unumdorligiga (${bestPhone.hardwareScores.performance} ball) ega!`;
+    } else if (state.advisor.priority === "priority-camera") {
+      reasonText = `Siz professional fotografiya va videoni tanladingiz. Bu model <strong>${bestPhone.quickSpecs.mainCamera}</strong> apparatiga ega bo'lib, jismoniy sensor o'lchami va optik stabilizatsiya (OIS) bo'yicha o'z sinfida eng kuchli kamera balliga (${bestPhone.hardwareScores.camera} ball) ega!`;
+    } else if (state.advisor.priority === "priority-battery") {
+      reasonText = `Siz uzoqqa yetadigan batareya va tez zaryadlashni tanladingiz. Ushbu apparat <strong>${bestPhone.quickSpecs.battery}</strong> quvvatiga ega bo'lib, 1-2 kunga bemalol yetadigan eng mustahkam batareya ko'rsatkichiga (${bestPhone.hardwareScores.battery} ball) ega!`;
+    } else if (state.advisor.priority === "priority-durability") {
+      reasonText = `Siz mustahkamlik va suvdan himoyani tanladingiz. Bu telefon <strong>${bestPhone.quickSpecs.protection}</strong> jismoniy himoyasi bilan korpus chidamliligi bo'yicha (${bestPhone.hardwareScores.durability} ball) eng ishonchli variantdir!`;
+    } else {
+      reasonText = `Siz tanlagan byudjet va brend bo'yicha bu model jismoniy datchiklar o'lchami, sovitish tizimi va batareya samaradorligi bo'yicha eng yuqori apparat balliga ega.`;
+    }
+
+    const alternativesHtml = (alternatives && alternatives.length > 0) ? `
+      <div style="margin-top: 1.8rem; padding-top: 1.2rem; border-top: 1px solid var(--border-color);">
+        <h4 style="font-size: 0.95rem; margin-bottom: 0.9rem; color: var(--text-secondary); display: flex; align-items: center; gap: 0.5rem;">
+          <i class="fa-solid fa-scale-balanced text-cyan"></i> Shuningdek, e'tiborga loyiq muqobil variantlar:
+        </h4>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem;">
+          ${alternatives.map(alt => `
+            <div style="background: var(--bg-surface-elevated); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 0.9rem; display: flex; gap: 0.8rem; align-items: center;">
+              <img src="${alt.image}" alt="${alt.name}" style="width: 50px; height: 50px; object-fit: contain; background: var(--bg-surface); border-radius: 8px; padding: 4px;">
+              <div style="flex: 1; min-width: 0;">
+                <strong style="display: block; font-size: 0.88rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${alt.name}</strong>
+                <span style="font-size: 0.8rem; color: var(--accent-green); font-weight: 700;">${alt.priceEstimateUZS}</span>
+                <div style="margin-top: 0.3rem;">
+                  <button class="btn btn-secondary btn-sm" onclick="openPhoneDetailModal('${alt.id}')" style="padding: 0.25rem 0.6rem; font-size: 0.75rem;">
+                    <i class="fa-solid fa-circle-info"></i> Tahlil
+                  </button>
+                </div>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    ` : '';
 
     advisorResultCard.innerHTML = `
       <div class="result-header">
@@ -1430,11 +1498,13 @@ document.addEventListener("DOMContentLoaded", () => {
       <div style="background: rgba(139, 92, 246, 0.12); padding: 1.2rem; border-radius: var(--radius-md); border-left: 4px solid var(--accent-purple); margin-bottom: 1.5rem;">
         <strong style="color: var(--accent-purple);"><i class="fa-solid fa-check"></i> Nega aynan shu telefon tanlandi?</strong>
         <p style="font-size: 0.9rem; color: var(--text-secondary); margin-top: 0.3rem;">
-          Siz tanlagan parametrlar bo'yicha bu model jismoniy datchiklar o'lchami, sovitish tizimi va batareya samaradorligi bo'yicha o'z sinfida eng yuqori apparat balliga ega.
+          ${reasonText}
         </p>
       </div>
 
-      <div style="display: flex; gap: 0.8rem; justify-content: flex-end;">
+      ${alternativesHtml}
+
+      <div style="display: flex; gap: 0.8rem; justify-content: flex-end; margin-top: 1.2rem;">
         <button class="btn btn-primary" onclick="openPhoneDetailModal('${bestPhone.id}')">
           <i class="fa-solid fa-circle-info"></i> To'liq Apparat Tahlilini Ko'rish
         </button>

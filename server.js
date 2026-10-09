@@ -231,52 +231,55 @@ app.post('/api/advisor', (req, res) => {
   const { budget, priority, brand } = req.body;
   const phones = readPhonesDB();
 
-  let minPrice = 0;
-  let maxPrice = 99999;
+  let pool = [...phones];
+  let minPrice = 0, maxPrice = Infinity;
   if (budget === 'budget-entry') {
     minPrice = 200;
     maxPrice = 490;
   } else if (budget === 'budget-mid') {
     minPrice = 450;
-    maxPrice = 900;
+    maxPrice = 850;
   } else if (budget === 'budget-premium') {
-    minPrice = 900;
+    minPrice = 850;
     maxPrice = 99999;
   }
 
-  let candidates = phones.filter(p => p.priceEstimateUSD >= minPrice && p.priceEstimateUSD <= maxPrice);
-
+  let budgetMatches = pool.filter(p => p.priceEstimateUSD >= minPrice && p.priceEstimateUSD <= maxPrice);
+  let brandMatches = [];
   if (brand === 'brand-apple') {
-    const apples = candidates.filter(p => p.brand === 'Apple');
-    if (apples.length > 0) candidates = apples;
+    brandMatches = (budgetMatches.length > 0 ? budgetMatches : pool).filter(p => p.brand === 'Apple');
   } else if (brand === 'brand-samsung') {
-    const sams = candidates.filter(p => p.brand === 'Samsung');
-    if (sams.length > 0) candidates = sams;
+    brandMatches = (budgetMatches.length > 0 ? budgetMatches : pool).filter(p => p.brand === 'Samsung');
   } else if (brand === 'brand-xiaomi') {
-    const xiaomis = candidates.filter(p => ['Xiaomi', 'OnePlus', 'Poco'].includes(p.brand));
-    if (xiaomis.length > 0) candidates = xiaomis;
+    brandMatches = (budgetMatches.length > 0 ? budgetMatches : pool).filter(p => ['Xiaomi', 'OnePlus', 'Poco'].includes(p.brand));
   }
 
-  if (candidates.length === 0) {
-    candidates = [...phones];
-  }
+  let candidates = brandMatches.length > 0 ? brandMatches : (budgetMatches.length > 0 ? budgetMatches : pool);
 
-  candidates.sort((a, b) => {
-    if (priority === 'priority-camera') {
-      return b.hardwareScores.camera - a.hardwareScores.camera;
-    } else if (priority === 'priority-gaming') {
-      return b.hardwareScores.performance - a.hardwareScores.performance;
+  const scored = candidates.map(phone => {
+    let score = phone.hardwareScores.overall;
+    if (priority === 'priority-gaming') {
+      score = (phone.hardwareScores.performance * 0.6) + (phone.hardwareScores.display * 0.2) + (phone.hardwareScores.battery * 0.2);
+      if (phone.id === 'asus-rog-phone-8-pro') score += 5;
+      if (phone.id === 'poco-f6-pro') score += 3;
+    } else if (priority === 'priority-camera') {
+      score = (phone.hardwareScores.camera * 0.7) + (phone.hardwareScores.display * 0.15) + (phone.hardwareScores.overall * 0.15);
+      if (phone.id === 'xiaomi-14-ultra' || phone.id === 'vivo-x100-pro') score += 3;
     } else if (priority === 'priority-battery') {
-      return b.hardwareScores.battery - a.hardwareScores.battery;
+      score = (phone.hardwareScores.battery * 0.7) + (phone.hardwareScores.durability * 0.15) + (phone.hardwareScores.overall * 0.15);
+      if (phone.id === 'oneplus-12') score += 3;
     } else if (priority === 'priority-durability') {
-      return b.hardwareScores.durability - a.hardwareScores.durability;
+      score = (phone.hardwareScores.durability * 0.7) + (phone.hardwareScores.battery * 0.15) + (phone.hardwareScores.overall * 0.15);
+      if (phone.quickSpecs && phone.quickSpecs.protection && phone.quickSpecs.protection.includes('Titanium')) score += 3;
     }
-    return b.hardwareScores.overall - a.hardwareScores.overall;
+    return { phone, calculatedScore: score };
   });
 
+  scored.sort((a, b) => b.calculatedScore - a.calculatedScore);
+
   res.json({
-    recommended: candidates[0],
-    alternatives: candidates.slice(1, 3)
+    recommended: scored[0].phone,
+    alternatives: scored.slice(1, 3).map(s => s.phone)
   });
 });
 
